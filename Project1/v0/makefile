@@ -2,7 +2,7 @@
 #
 # Makefile for project 1 phase 1.
 
-DEBUG = -g -Wall
+DEBUG = -g -Wall -D_DEBUG
 
 all: mc0
 
