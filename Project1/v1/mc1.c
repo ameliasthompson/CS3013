@@ -18,15 +18,15 @@
  * Fork and execute a command provided by an option struct.
  * @arg	args	A pointer to the array of arguments (including path).
  */
-void executeCommand(char** args) {
-	struct timespec start, stop;
-	clock_gettime(CLOCK_MONOTONIC, &start); // Start the timer.
-	pid_t cid = fork();
-	if (cid == -1) {
+void executeCommand(char** args, int argc) {
+	struct timeval start, stop;
+	gettimeofday(&start, NULL); // Start the timer.
+	pid_t cpid = fork();
+	if (cpid == -1) {
 		// If the fork has failed:
 		fprintf(stderr, "Fork failed; aborting...\n");
 	
-	} else if (cid == 0) {
+	} else if (cpid == 0) {
 		// We are the child.
 		execvp(args[0], args);
 	
@@ -34,14 +34,14 @@ void executeCommand(char** args) {
 		// We are the parent.
 		struct rusage* stats = malloc(sizeof(struct rusage));
 		wait3(NULL, 0, stats);
-		clock_gettime(CLOCK_MONOTONIC, &stop); // End the timer.
+		gettimeofday(&stop, NULL); // End the timer.
 		
 		// Calculate time elapsed.
 		time_t seconds = stop.tv_sec - start.tv_sec;
-		long nanoseconds = stop.tv_nsec - start.tv_nsec;
+		long microseconds = stop.tv_usec - start.tv_usec;
 		
 		long milliseconds = seconds * 1000; // Convert seconds to milliseconds.
-		milliseconds += nanoseconds / 1000000; // Convert nanoseconds to milliseconds.
+		milliseconds += microseconds / 1000; // Convert microseconds to milliseconds.
 		
 		// Print statistics.
 		printf("\n--- Statistics ---\n");
@@ -59,10 +59,8 @@ void executeCommand(char** args) {
 	// Free arguments.
 	// Child shouldn't need to free them because it's dead.
 	// Start at 1 because 0 is a pointer to memory in a struct.
-	for (int i = 1; i < MAX_ARGS + 1; i++) {
-		if (args[i] != NULL) {
-			free(args[i]);
-		}
+	for (int i = 1; i < argc; i++) {
+		free(args[i]);
 	}
 }
 
@@ -80,7 +78,7 @@ int main(void) {
 	appendOption(cmds, &cmdsSize, "./seymour", "seymour", "Waits one thousand years.", "-- Waiting patiently --", 0, 0);
 	
 	// Print header.
-	printf("===== Mid-Day Commander, v0 =====\n");
+	printf("===== Mid-Day Commander, v1 =====\n");
 	
 	/*
 	 *  Main loop.
@@ -94,7 +92,7 @@ int main(void) {
 		for (int i = 0; i < cmdsSize; i++) {
 			printf("   %d. %s\t: %s\n", i, cmds[i]->name, cmds[i]->desc);
 		}
-		printf("   a. add command.");
+		printf("   a. add command.\n");
 		printf("Option?: ");
 		
 		int option = selectOption(cmdsSize);
@@ -161,6 +159,10 @@ int main(void) {
 			}
 		}
 
+		// Terminate the arguments array.
+		args[argsSize] = NULL;
+		argsSize++; // So executeCommand() can properly free the memory.
+
 		#ifdef _DEBUG
 			printf ("COMMAND: ");
 			for (int _ARG = 0; args[_ARG] != NULL; _ARG++) {
@@ -170,7 +172,7 @@ int main(void) {
 		#endif
 		
 		// Finally, it's time to execute.
-		executeCommand(args);
+		executeCommand(args, argsSize);
 	
 		// ARGUMENTS FREED BY EXECUTE FUNCTION (GOING TO BE IMPORTANT FOR THREADING)
 		

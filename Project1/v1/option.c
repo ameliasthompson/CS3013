@@ -53,7 +53,7 @@ int addOption(struct option** cmds, int* size) {
 
 int appendOption(struct option** cmds, int* size, const char* path, const char* name, const char* desc, const char* head, int args, int argPath) {
 	// Allocate new struct.
-	struct option* opt = malloc(sizeof(struct option*)); // Could just do void*, because all pointers are the same size.
+	struct option* opt = malloc(sizeof(struct option));
 	if (opt == NULL) return -1; // Error if allocation failed.
 	
 	// Populate struct with arguments.
@@ -65,7 +65,8 @@ int appendOption(struct option** cmds, int* size, const char* path, const char* 
 	opt->argPath = argPath;
 	
 	// Push it to the array.
-	cmds[(*size)++] = opt;
+	cmds[*size] = opt;
+	(*size)++;
 	
 	
 	return 1; // Return true cause we did good.
