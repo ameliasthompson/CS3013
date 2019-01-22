@@ -43,7 +43,7 @@ int main(void) {
 	}
 
 	// Print header.
-	printf("===== Mid-Day Commander, v1 =====\n");
+	printf("===== Mid-Day Commander, v2 =====\n");
 	
 	/*
 	 *  Main loop.
@@ -209,6 +209,11 @@ int main(void) {
 						cleanCommand(proc, &use);
 					}
 				}
+			} else {
+				// It's not blocking!
+				// Find an unused process tracker.
+				struct cprocess* proc = findProcess(processes, MAX_BGPROCESSES, 0);
+				executeCommand(args, argsSize, proc);
 			}
 
 			// Try to grab a child process while we're out here.

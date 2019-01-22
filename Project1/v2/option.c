@@ -66,9 +66,11 @@ int addOption(struct option** cmds, int* size) {
 		tmp = strtok(NULL, " "); // Prime strtok().
 		int argsSize = 0;
 		while (argsSize < MAX_DEF_ARGS - 1 && tmp != NULL) {
-			if (strcmp(tmp, "&")) {
+			if (tmp[0] == '&') {
 				// Argument is a don't block please one.
 				blocking = 0;
+				tmp = strtok(NULL, " "); // Should keep going on buf.
+				// Didn't add an argument, so don't increment size.
 
 			} else {
 				// tmp actually has an argument if you're here.

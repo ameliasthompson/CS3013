@@ -3,7 +3,11 @@
 #include "cprocess.h"
 
 struct cprocess* findProcess(struct cprocess* array, int size, pid_t pid) {
+    for(int i = 0; i < size; i++) {
+        if (array[i].pid == pid) return array + i;
+    }
 
+    return NULL;
 }
 
 void executeCommand(char** args, int argc, struct cprocess* tracker) {

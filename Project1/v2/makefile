@@ -4,13 +4,13 @@
 
 DEBUG = -g -Wall -D_DEBUG
 
-all: mc1 seymour
+all: mc2 seymour
 
-mc1: mc1.o util.o option.o
-	gcc $(DEBUG) mc1.o util.o option.o -o mc1
+mc2: mc2.o util.o option.o cprocess.o
+	gcc $(DEBUG) mc2.o util.o option.o cprocess.o -o mc2
 
-mc1.o: mc1.c
-	gcc -c $(DEBUG) mc1.c
+mc2.o: mc2.c
+	gcc -c $(DEBUG) mc2.c
 
 util.o: util.c util.h
 	gcc -c $(DEBUG) util.c
@@ -18,8 +18,11 @@ util.o: util.c util.h
 option.o: option.c option.h
 	gcc -c $(DEBUG) option.c
 
+cprocess.o: cprocess.c cprocess.h
+	gcc -c $(DEBUG) cprocess.c
+
 seymour: seymour.c
 	gcc $(DEBUG) seymour.c -o seymour
 
 clean:
-	rm -f *.o mc1 seymour
+	rm -f *.o mc2 seymour
