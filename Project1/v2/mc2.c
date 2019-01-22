@@ -1,5 +1,6 @@
 // Maximilian Thompson
 
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#include "waitthread.h"
 #include "cprocess.h"
 #include "option.h"
 #include "util.h"
@@ -15,9 +17,13 @@
 #define MAX_ARGS		40
 #define MAX_OPTIONS		32
 #define MAX_DIR_LENGTH	128
-#define MAX_BGPROCESSES	10
 
-
+// The thread that waits.
+pthread_t wait_thread;
+// Background proccesses for waitthread to check.
+struct cprocess processes[MAX_BGPROCESSES];
+// Allows main thread to tell wait thread to hold it for a bit.
+pthread_mutex_t canWait;
 
 int main(void) {
 	/*
@@ -25,10 +31,15 @@ int main(void) {
 	 */
 	
 	// Initialize the background process tracker array.
-	struct cprocess processes[MAX_BGPROCESSES];
 	for (int i = 0; i < MAX_BGPROCESSES; i++) {
 		processes[i].pid = 0; // Anything with this pid is not a processes.
 	}
+
+	// Initialize mutex.
+	pthread_mutex_init(&canWait, NULL);
+
+	// Initialize wait_thread.
+	pthread_create(&wait_thread, NULL, waitThread, NULL);
 
 	// Initialize array of options with defaults.
 	struct option* cmds[MAX_OPTIONS];
@@ -192,6 +203,8 @@ int main(void) {
 				executeCommand(args, argsSize, &fgProcess);
 
 				// We're blocking, so we're in for the long haul now.
+				// We need to stop waithread so we can handle this on our own for a bit.
+				pthread_mutex_lock(&canWait);
 				pid_t fin = 0;
 				while (fin != fgProcess.pid) {
 					// Wait for something to happen.
@@ -209,25 +222,13 @@ int main(void) {
 						cleanCommand(proc, &use);
 					}
 				}
+				// And now that we've found the one we're waiting for, waitThread can get right back to it.
+				pthread_mutex_unlock(&canWait);
 			} else {
 				// It's not blocking!
-				// Find an unused process tracker.
+				// Find an unused process tracker, and run the command.
 				struct cprocess* proc = findProcess(processes, MAX_BGPROCESSES, 0);
 				executeCommand(args, argsSize, proc);
-			}
-
-			// Try to grab a child process while we're out here.
-			// We have to try at least as many times as there are potential processes.
-			for (int i = 0; i < MAX_BGPROCESSES; i++) {
-				pid_t bgproc = 0;
-				struct rusage bguse;
-				bgproc = wait3(NULL, WNOHANG, &bguse);
-				
-				// Try to resolve something if it happened.
-				if (bgproc > 0) {
-					struct cprocess* tracker = findProcess(processes, MAX_BGPROCESSES, bgproc);
-					cleanCommand(tracker, &bguse);
-				}
 			}
 			
 			printf("\n"); // A little padding before the next prompt.
