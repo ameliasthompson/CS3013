@@ -4,10 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/resource.h>
+#include <sys/time.h>
 #include <sys/wait.h>
+#include <time.h>
 #include <unistd.h>
 
-#define MAX_OPTION 2
+#define MAX_OPTION 3
 #define MAX_ARGS 20
 #define MAX_IN_LENGTH 100
 
@@ -72,6 +75,7 @@ int main(void) {
 		printf("   0. whoami\t: Prints out the result of the whoami command.\n");
 		printf("   1. last\t: Prints out the result of the last command.\n");
 		printf("   2. ls\t: Prints out the result of the ls command.\n");
+		printf("   3. seymour\t: Wait.\n");
 		printf("Option?: ");
 		
 		int option = getOption();
@@ -110,7 +114,6 @@ int main(void) {
 				break;
 		
 			case 2: // ls
-				
 				printf("-- Directory Listing --\n");
 				args[0] = "/bin/ls"; // Set executable path.
 				
@@ -150,6 +153,11 @@ int main(void) {
 				printf("\n"); // A little padding.
 				break;
 			
+			case 3: // seymour
+				printf("-- Waiting --\n");
+				args[0] = "./seymour";
+				break;
+				
 			default: // Error
 				fprintf(stderr, "Somehow, nothing caught this invalid option.\n");
 				exit(-1);
@@ -165,6 +173,8 @@ int main(void) {
 		
 		
 			// Finally, it's time to execute.
+			struct timespec start, stop;
+			clock_gettime(CLOCK_MONOTONIC, &start); // Start the timer.
 			pid_t cid = fork();
 			if (cid == -1) {
 				// If the fork has failed:
@@ -178,11 +188,24 @@ int main(void) {
 				// We are the parent.
 				struct rusage* stats = malloc(sizeof(struct rusage));
 				wait3(NULL, 0, stats);
+				clock_gettime(CLOCK_MONOTONIC, &stop); // End the timer.
+				
+				// Calculate time elapsed.
+				time_t seconds = stop.tv_sec - start.tv_sec;
+				long nanoseconds = stop.tv_nsec - start.tv_nsec;
+				
+				long milliseconds = seconds * 1000; // Convert seconds to milliseconds.
+				milliseconds += nanoseconds / 1000000; // Convert nanoseconds to milliseconds.
 				
 				// Print statistics.
 				printf("\n--- Statistics ---\n");
-				printf("Elapsed time: %ld milliseconds", stats->ru_utime + stats->ru_stime);
-				printf("Page Faults: %ld", 0);
+				if (milliseconds < 1) { // Print something special if almost no time passed.
+					printf("Elapsed time: <1 millisecond\n");
+				} else { // Otherwise just print the value.
+					printf("Elapsed time: %ld milliseconds\n", milliseconds);
+				}
+				printf("Page faults: %ld\n", stats->ru_majflt);
+				printf("Page faults (reclaimed): %ld\n", stats->ru_minflt);
 			
 				free(stats);
 			}
