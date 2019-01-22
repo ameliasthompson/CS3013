@@ -15,7 +15,17 @@
 struct cprocess {
 	struct timeval start, stop;
 	pid_t pid;
+    int jobnum;
 };
+
+/**
+ * Iterate over the array of processes and decrement the job number of all
+ * processes higher than n.
+ * @param   array   A pointer to the first element of an array.
+ * @param   size    The size of the array.
+ * @param   n       The number.
+ */
+void decrementJobs(struct cprocess* array, int size, int n);
 
 /**
  * Find a process in a given array with the given pid.
@@ -25,6 +35,15 @@ struct cprocess {
  * @return  A pointer to the cprocess struct.
  */
 struct cprocess* findProcess(struct cprocess* array, int size, pid_t pid);
+
+/**
+ * Find a process with a given job number.
+ * @param   array   A pointer to the first element of an array.
+ * @param   size    The size of the array.
+ * @param   n       The job number to look for.
+ * @return  A pointer to the cprocess struct.
+ */
+struct cprocess* findJobnum(struct cprocess* array, int size, int n);
 
 /**
  * Fork and execute a command provided by an option struct.

@@ -106,7 +106,11 @@ int main(void) {
 		int option = selectOption(cmdsSize);
 		
 		// Check for predefined letter options before selecting a command option.
-		if (option == OPT_A) {
+		if (option == -1) {
+			// The user gave us junk.
+			printf("Invalid choice.\n");
+		
+		} else if (option == OPT_A) {
 			// Add a command, and store its ID.
 			int id = addOption(cmds, &cmdsSize);
 

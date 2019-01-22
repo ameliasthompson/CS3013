@@ -22,6 +22,8 @@ int selectOption(int size) {
 		return OPT_E;
 	case 'p':
 		return OPT_P;
+	case 'r':
+		return OPT_R;
 	}
 
 	// Identify if the input at least starts with a number.
@@ -30,7 +32,7 @@ int selectOption(int size) {
 		int option = atoi(choiceStr);
 		
 		// Identify if it's in range.
-		if (option >= 0 && option <= size) {
+		if (option >= 0 && option < size) {
 			// We now know the option is 100% valid.
 			return option;
 		}

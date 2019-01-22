@@ -13,4 +13,4 @@ seymour: seymour.c
 	gcc $(DEBUG) seymour.c -o seymour
 
 clean:
-	rm -f *.o mc0
+	rm -f *.o mc0 seymour

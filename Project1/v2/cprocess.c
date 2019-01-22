@@ -2,9 +2,26 @@
 
 #include "cprocess.h"
 
-struct cprocess* findProcess(struct cprocess* array, int size, pid_t pid) {
+extern int jobCounter;
+
+void decrementJobs(struct cprocess* array, int size, int n) {
     for(int i = 0; i < size; i++) {
+        if (array[i].jobnum > n) array[i].jobnum--;
+    }
+    jobCounter--;
+}
+
+struct cprocess* findProcess(struct cprocess* array, int size, pid_t pid) {
+    for (int i = 0; i < size; i++) {
         if (array[i].pid == pid) return array + i;
+    }
+
+    return NULL;
+}
+
+struct cprocess* findJobnum(struct cprocess* array, int size, int n) {
+    for (int i = 0; i < size; i++) {
+        if (array[i].jobnum == n) return array + i;
     }
 
     return NULL;

@@ -7,7 +7,7 @@
 
 #include "cprocess.h"
 
-#define MAX_BGPROCESSES	10
+#define MAX_BGPROCESSES	100
 
 /**
  * Wait and wait and wait and wait. Resolve commands when background processes

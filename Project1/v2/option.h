@@ -19,6 +19,7 @@
 #define OPT_C -3
 #define OPT_E -4
 #define OPT_P -5
+#define OPT_R -6
 
 /**
  * @struct option

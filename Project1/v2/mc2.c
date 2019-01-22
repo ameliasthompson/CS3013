@@ -25,6 +25,9 @@ struct cprocess processes[MAX_BGPROCESSES];
 // Allows main thread to tell wait thread to hold it for a bit.
 pthread_mutex_t canWait;
 
+// The number to give the next job.
+int jobCounter;
+
 int main(void) {
 	/*
 	 *  Startup.
@@ -53,6 +56,9 @@ int main(void) {
 		exit (-1);
 	}
 
+	// Initialize job counter.
+	jobCounter = 1;
+
 	// Print header.
 	printf("===== Mid-Day Commander, v2 =====\n");
 	
@@ -72,12 +78,17 @@ int main(void) {
 		printf("   c. change directory : Changes the process working directory.\n");
 		printf("   e. exit : Leave Mid-Day Commander.\n");
 		printf("   p. pwd : Prints the working directory.\n");
+		printf("   r. running processes : Print list of running processes.\n");
 		printf("Option?: ");
 		
 		int option = selectOption(cmdsSize);
 		
 		// Check for predefined letter options before selecting a command option.
-		if (option == OPT_A) {
+		if (option == -1) {
+			// The user gave us junk.
+			printf("Invalid choice.\n");
+
+		} else if (option == OPT_A) {
 			// Add a command, and store its ID.
 			int id = addOption(cmds, &cmdsSize);
 
@@ -110,6 +121,20 @@ int main(void) {
 			getcwd(path, MAX_DIR_LENGTH);
 			printf("cwd: %s\n", path);
 			printf("\n"); // Padding before next prompt.
+
+		} else if (option == OPT_R) {
+			// Print running processes.
+			printf("-- Running Processes --\n");
+
+			// Stop anything from ending while we're here.
+			pthread_mutex_lock(&canWait);
+			// Let's do an O(n^2) search for jobs!!!
+			for (int i = 1; i < jobCounter; i++) {
+				struct cprocess* job = findJobnum(processes, MAX_BGPROCESSES, i);
+				printf("[%d] Process ID: %d\n", job->jobnum, job->pid);
+			}
+
+			pthread_mutex_unlock(&canWait);
 
 		} else {
 			// We want to actually run a command!
@@ -219,6 +244,11 @@ int main(void) {
 						// It's a background process!
 						// Find the right tracker and pass it on.
 						struct cprocess* proc = findProcess(processes, MAX_BGPROCESSES, fin);
+						// Print the background process header.
+						printf("\n-- Job Complete [%d] --\n", proc->jobnum);
+						printf("Process ID: %d\n", proc->pid);
+						// Clean up and print statistics.
+						decrementJobs(processes, MAX_BGPROCESSES, proc->jobnum);
 						cleanCommand(proc, &use);
 					}
 				}
@@ -228,6 +258,7 @@ int main(void) {
 				// It's not blocking!
 				// Find an unused process tracker, and run the command.
 				struct cprocess* proc = findProcess(processes, MAX_BGPROCESSES, 0);
+				proc->jobnum = jobCounter++;
 				executeCommand(args, argsSize, proc);
 			}
 			
@@ -244,6 +275,7 @@ int main(void) {
 		for (int i = 0; i < MAX_BGPROCESSES; i++) {
 			if (processes[i].pid != 0) remainOpen = 1;
 		}
+		if (remainOpen) pthread_yield(); // Nothing is going to change if the other thread doesn't do anything.
 	}
 
 	printf("Exiting...\n");

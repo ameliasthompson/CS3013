@@ -16,6 +16,11 @@ void* waitThread() {
         // Try to resolve something if it happened.
         if (pid > 0) {
             struct cprocess* tracker = findProcess(processes, MAX_BGPROCESSES, pid);
+            // Print the background process header.
+            printf("\n-- Job Complete [%d] --\n", tracker->jobnum);
+            printf("Process ID: %d\n", tracker->pid);
+            // Clean up and print statistics.
+            decrementJobs(processes, MAX_BGPROCESSES, tracker->jobnum);
             cleanCommand(tracker, &use);
         }
         // Probably shouldn't yield because this doesn't block the processes it's
