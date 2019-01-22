@@ -235,5 +235,16 @@ int main(void) {
 		}
 	}
 
+	printf("Waiting for background proccesses to die...\n");
+
+	// Just keep looping until the background threads deals with everything.
+	int remainOpen = 1;
+	while (remainOpen) {
+		remainOpen = 0;
+		for (int i = 0; i < MAX_BGPROCESSES; i++) {
+			if (processes[i].pid != 0) remainOpen = 1;
+		}
+	}
+
 	printf("Exiting...\n");
 }
