@@ -1,0 +1,311 @@
+===== Mid-Day Commander, v2 =====
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: Command?: Added with ID 3
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- ./seymour & --
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- ./seymour & --
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- ./seymour & --
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- ./seymour & --
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- ./seymour & --
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: -- Running Processes --
+[1] Process ID: 15884
+[2] Process ID: 15885
+[3] Process ID: 15886
+[4] Process ID: 15891
+[5] Process ID: 15892
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: Invalid choice.
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: Invalid choice.
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: Command?: Added with ID 4
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   4. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- Last logins --
+amelia   :0           :0               Thu Jan 17 11:08   still logged in
+reboot   system boot  4.15.0-43-generi Thu Jan 17 11:07   still running
+amelia   :0           :0               Sun Jan 13 14:51 - crash (3+20:16)
+reboot   system boot  4.15.0-43-generi Sun Jan 13 14:50   still running
+amelia   :0           :0               Sat Jan 12 21:33 - crash  (17:17)
+
+wtmp begins Sat Jan 12 21:33:20 2019
+
+--- Statistics ---
+Elapsed time: 2 milliseconds
+Page faults: 0
+Page faults (reclaimed): 132
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   4. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: cwd: /home/amelia/CS3013/Project1/v2
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   4. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- Directory listing --
+total 96
+-rw-r--r-- 1 amelia amelia  2042 Jan 25 17:04 cprocess.c
+-rw-r--r-- 1 amelia amelia  1880 Jan 25 17:04 cprocess.h
+-rw-r--r-- 1 amelia amelia   646 Jan 25 17:04 makefile
+-rwxr-xr-x 1 amelia amelia 18416 Jan 25 17:43 mc2
+-rw-r--r-- 1 amelia amelia  8677 Jan 25 17:04 mc2.c
+-rw-r--r-- 1 amelia amelia  4368 Jan 25 17:04 option.c
+-rw-r--r-- 1 amelia amelia  3579 Jan 25 17:04 option.h
+-rw-r--r-- 1 amelia amelia     0 Jan 25 17:48 output
+-rwxr-xr-x 1 amelia amelia  8304 Jan 25 17:43 seymour
+-rw-r--r-- 1 amelia amelia   177 Jan 25 17:04 seymour.c
+-rw-r--r-- 1 amelia amelia    73 Jan 25 17:04 testcases
+-rw-r--r-- 1 amelia amelia     2 Jan 25 17:04 testIn
+-rw-r--r-- 1 amelia amelia   200 Jan 25 17:04 util.c
+-rw-r--r-- 1 amelia amelia   254 Jan 25 17:04 util.h
+-rw-r--r-- 1 amelia amelia   957 Jan 25 17:04 waitthread.c
+-rw-r--r-- 1 amelia amelia   267 Jan 25 17:04 waitthread.h
+Arguments?: Path?: 
+--- Statistics ---
+Elapsed time: 2 milliseconds
+Page faults: 0
+Page faults (reclaimed): 156
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   4. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: Path?: 
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   4. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: cwd: /home/amelia/CS3013/Project1
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   4. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: 
+-- Directory listing --
+total 20
+-rw-r--r-- 1 amelia amelia  805 Jan 25 17:43 Makefile
+-rw-r--r-- 1 amelia amelia 2311 Jan 25 17:27 README
+drwxr-xr-x 2 amelia amelia 4096 Jan 25 17:46 v0
+drwxr-xr-x 2 amelia amelia 4096 Jan 25 17:48 v1
+drwxr-xr-x 2 amelia amelia 4096 Jan 25 17:48 v2
+Arguments?: Path?: 
+--- Statistics ---
+Elapsed time: 1 milliseconds
+Page faults: 0
+Page faults (reclaimed): 153
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour &	: A user generated command.
+   4. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+   r. running processes : Print list of running processes.
+Option?: Waiting for background proccesses to die...
+Seymour waited for you.
+
+-- Job Complete [5] --
+Process ID: 15892
+
+--- Statistics ---
+Elapsed time: 1038 milliseconds
+Page faults: 0
+Page faults (reclaimed): 66
+Seymour waited for you.
+
+-- Job Complete [2] --
+Process ID: 15885
+
+--- Statistics ---
+Elapsed time: 1078 milliseconds
+Page faults: 0
+Page faults (reclaimed): 65
+Seymour waited for you.
+
+-- Job Complete [1] --
+Process ID: 15884
+
+--- Statistics ---
+Elapsed time: 1084 milliseconds
+Page faults: 0
+Page faults (reclaimed): 65
+Seymour waited for you.
+
+-- Job Complete [2] --
+Process ID: 15891
+
+--- Statistics ---
+Elapsed time: 1083 milliseconds
+Page faults: 0
+Page faults (reclaimed): 67
+Seymour waited for you.
+
+-- Job Complete [1] --
+Process ID: 15886
+
+--- Statistics ---
+Elapsed time: 1085 milliseconds
+Page faults: 0
+Page faults (reclaimed): 66
+Exiting...
+

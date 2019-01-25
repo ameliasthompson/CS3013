@@ -1,0 +1,259 @@
+===== Mid-Day Commander, v1 =====
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Command?: Added with ID 3
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: 
+-- ./seymour --
+Seymour waited for you.
+
+--- Statistics ---
+Elapsed time: 1128 milliseconds
+Page faults: 0
+Page faults (reclaimed): 57
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Command?: Added with ID 4
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: 
+-- cat testcases --
+a
+./seymour
+3
+a
+cat testcases
+4
+-1
+8
+abra kadabra
+0
+1
+p
+2
+-l
+./
+c
+..
+p
+2
+-l
+./
+
+
+--- Statistics ---
+Elapsed time: <1 millisecond
+Page faults: 0
+Page faults (reclaimed): 74
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Invalid choice.
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Invalid choice.
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Command?: Added with ID 5
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: 
+-- Last logins --
+amelia   :0           :0               Thu Jan 17 11:08   still logged in
+reboot   system boot  4.15.0-43-generi Thu Jan 17 11:07   still running
+amelia   :0           :0               Sun Jan 13 14:51 - crash (3+20:16)
+reboot   system boot  4.15.0-43-generi Sun Jan 13 14:50   still running
+amelia   :0           :0               Sat Jan 12 21:33 - crash  (17:17)
+
+wtmp begins Sat Jan 12 21:33:20 2019
+
+--- Statistics ---
+Elapsed time: 1 milliseconds
+Page faults: 0
+Page faults (reclaimed): 122
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: cwd: /home/amelia/CS3013/Project1/v1
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: 
+-- Directory listing --
+total 80
+-rw-r--r-- 1 amelia amelia   400 Jan 25 17:04 makefile
+-rwxr-xr-x 1 amelia amelia 17752 Jan 25 17:43 mc1
+-rw-r--r-- 1 amelia amelia  7262 Jan 25 17:04 mc1.c
+-rw-r--r-- 1 amelia amelia  3946 Jan 25 17:04 option.c
+-rw-r--r-- 1 amelia amelia  3432 Jan 25 17:04 option.h
+-rw-r--r-- 1 amelia amelia 10183 Jan 25 17:47 output
+-rwxr-xr-x 1 amelia amelia  8304 Jan 25 17:43 seymour
+-rw-r--r-- 1 amelia amelia   177 Jan 25 17:04 seymour.c
+-rw-r--r-- 1 amelia amelia    80 Jan 25 17:04 testcases
+-rw-r--r-- 1 amelia amelia   200 Jan 25 17:04 util.c
+-rw-r--r-- 1 amelia amelia   254 Jan 25 17:04 util.h
+Arguments?: Path?: 
+--- Statistics ---
+Elapsed time: 1 milliseconds
+Page faults: 0
+Page faults (reclaimed): 144
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Path?: 
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: cwd: /home/amelia/CS3013/Project1
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: 
+-- Directory listing --
+total 20
+-rw-r--r-- 1 amelia amelia  805 Jan 25 17:43 Makefile
+-rw-r--r-- 1 amelia amelia 2311 Jan 25 17:27 README
+drwxr-xr-x 2 amelia amelia 4096 Jan 25 17:46 v0
+drwxr-xr-x 2 amelia amelia 4096 Jan 25 17:46 v1
+drwxr-xr-x 2 amelia amelia 4096 Jan 25 17:43 v2
+Arguments?: Path?: 
+--- Statistics ---
+Elapsed time: 1 milliseconds
+Page faults: 0
+Page faults (reclaimed): 144
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Invalid choice.
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the 'whoami' command.
+   1. last	: Prints out the result of the 'last' command.
+   2. ls	: Prints out the result of the 'ls' command.
+   3. ./seymour	: A user generated command.
+   4. cat testcases	: A user generated command.
+   5. 0	: A user generated command.
+   a. add command : Adds a new command to the menu.
+   c. change directory : Changes the process working directory.
+   e. exit : Leave Mid-Day Commander.
+   p. pwd : Prints the working directory.
+Option?: Exiting...
+

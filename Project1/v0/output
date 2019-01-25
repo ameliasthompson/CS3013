@@ -1,0 +1,149 @@
+===== Mid-Day Commander, v0 =====
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: 4
+Invalid option.
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: -1
+Invalid option.
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: 8
+Invalid option.
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: abra kadabra
+Invalid option.
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: 0
+
+-- Who am I? --
+amelia
+
+--- Statistics ---
+Elapsed time: 1 milliseconds
+Page faults: 0
+Page faults (reclaimed): 96
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: 1
+
+-- Last Logins --
+amelia   :0           :0               Thu Jan 17 11:08   still logged in
+reboot   system boot  4.15.0-43-generi Thu Jan 17 11:07   still running
+amelia   :0           :0               Sun Jan 13 14:51 - crash (3+20:16)
+reboot   system boot  4.15.0-43-generi Sun Jan 13 14:50   still running
+amelia   :0           :0               Sat Jan 12 21:33 - crash  (17:17)
+
+wtmp begins Sat Jan 12 21:33:20 2019
+
+--- Statistics ---
+Elapsed time: 2 milliseconds
+Page faults: 0
+Page faults (reclaimed): 117
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: p
+Invalid option.
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: 2
+
+-- Directory Listing --
+Arguments?: -l
+Path?: ./
+
+total 52
+-rw-r--r-- 1 amelia amelia   228 Jan 25 17:04 makefile
+-rwxr-xr-x 1 amelia amelia 13264 Jan 25 17:43 mc0
+-rw-r--r-- 1 amelia amelia  6175 Jan 25 17:04 mc0.c
+-rw-r--r-- 1 amelia amelia  1204 Jan 25 17:45 output
+-rwxr-xr-x 1 amelia amelia  8304 Jan 25 17:43 seymour
+-rw-r--r-- 1 amelia amelia   177 Jan 25 17:04 seymour.c
+-rw-r--r-- 1 amelia amelia    45 Jan 25 17:04 testcases
+
+--- Statistics ---
+Elapsed time: 2 milliseconds
+Page faults: 0
+Page faults (reclaimed): 139
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: 2
+
+-- Directory Listing --
+Arguments?: -l
+Path?: ./
+
+total 52
+-rw-r--r-- 1 amelia amelia   228 Jan 25 17:04 makefile
+-rwxr-xr-x 1 amelia amelia 13264 Jan 25 17:43 mc0
+-rw-r--r-- 1 amelia amelia  6175 Jan 25 17:04 mc0.c
+-rw-r--r-- 1 amelia amelia  1204 Jan 25 17:45 output
+-rwxr-xr-x 1 amelia amelia  8304 Jan 25 17:43 seymour
+-rw-r--r-- 1 amelia amelia   177 Jan 25 17:04 seymour.c
+-rw-r--r-- 1 amelia amelia    45 Jan 25 17:04 testcases
+
+--- Statistics ---
+Elapsed time: 2 milliseconds
+Page faults: 0
+Page faults (reclaimed): 142
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: 3
+
+-- Waiting --
+Seymour waited for you.
+
+--- Statistics ---
+Elapsed time: 1129 milliseconds
+Page faults: 0
+Page faults (reclaimed): 58
+
+Taimi speaking. What command would you like to run?
+   0. whoami	: Prints out the result of the whoami command.
+   1. last	: Prints out the result of the last command.
+   2. ls	: Prints out the result of the ls command.
+   3. seymour	: Wait.
+Option?: ^C
+
