@@ -30,7 +30,7 @@ asmlinkage long new_sys_open(const char *filename, int flags, int mode) {
 asmlinkage long new_sys_close(unsigned int filedescriptor) {
     kuid_t uid = current_uid();
     if (uid.val >= 1000) // If it's a user.
-        printk(KERN_INFO "User %u is closing filedescriptor:  %u\n", uid.val, filedescriptor);
+        printk(KERN_INFO "User %u is closing file descriptor:  %u\n", uid.val, filedescriptor);
     
     return ref_sys_close(filedescriptor);
 }
