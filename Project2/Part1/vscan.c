@@ -35,7 +35,7 @@ asmlinkage long new_sys_close(unsigned int filedescriptor) {
 
 asmlinkage long new_sys_read(unsigned int filedescriptor, char *buf, size_t count) {
     printk(KERN_INFO "\"'Hello world?!' More like 'Goodbye, world!' EXTERMINATE!\" -- Dalek");
-    return ref_sys_read(filedescriptor, bug, count);
+    return ref_sys_read(filedescriptor, buf, count);
 }
 
 /**************************************************************
