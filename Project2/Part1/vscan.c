@@ -7,35 +7,35 @@
 // References.
 unsigned long **sys_call_table;
 
-asmlinkage long (*ref_sys_open)(void);
-asmlinkage long (*ref_sys_close)(void);
-asmlinkage long (*ref_sys_read)(void);
+asmlinkage long (*ref_sys_open)(const char *filename, int flags, int mode);
+asmlinkage long (*ref_sys_close)(unsigned int filedescriptor);
+asmlinkage long (*ref_sys_read)(unsigned int filedescriptor, char *buf, size_t count);
 
 /**************************************************************
  * NEW OPEN
  **************************************************************/
 
-asmlinkage long new_sys_open(void) {
+asmlinkage long new_sys_open(const char *filename, int flags, int mode) {
     printk(KERN_INFO "\"'Hello world?!' More like 'Goodbye, world!' EXTERMINATE!\" -- Dalek");
-    return 0;
+    return ref_sys_open(filename, flags, mode);
 }
 
 /**************************************************************
  * NEW CLOSE
  **************************************************************/
 
-asmlinkage long new_sys_close(void) {
+asmlinkage long new_sys_close(unsigned int filedescriptor) {
     printk(KERN_INFO "\"'Hello world?!' More like 'Goodbye, world!' EXTERMINATE!\" -- Dalek");
-    return 0;
+    return ref_sys_close(filedescriptor);
 }
 
 /**************************************************************
  * NEW READ
  **************************************************************/
 
-asmlinkage long new_sys_read(void) {
+asmlinkage long new_sys_read(unsigned int filedescriptor, char *buf, size_t count) {
     printk(KERN_INFO "\"'Hello world?!' More like 'Goodbye, world!' EXTERMINATE!\" -- Dalek");
-    return 0;
+    return ref_sys_read(filedescriptor, bug, count);
 }
 
 /**************************************************************
