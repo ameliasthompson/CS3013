@@ -5,3 +5,15 @@ seymour
 *.o
 *.zip
 *.out
+
+# Module stuff
+Module.symvers
+modules.order
+*.ko
+*.mod.c
+*.mod.o
+*.o.ur-safe
+*.o.cmd
+*.mod.o.cmd
+*.ko.cmd
+*.tmp_versions/
