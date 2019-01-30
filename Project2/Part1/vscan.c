@@ -20,7 +20,7 @@ asmlinkage long new_sys_open(const char *filename, int flags, int mode) {
     kuid_t uid = current_uid();
     /* If open returned 0, then we know that the filename string is safe to read
      * otherwise the open call would have errored. */
-    if (code == 0 && uid.val >= 1000) // If it's a user.
+    if (code >= 0 && uid.val >= 1000) // If it's a user.
         printk(KERN_INFO "User %u is opening file:  %s\n", uid.val, filename);
     
     return code;
@@ -45,20 +45,20 @@ asmlinkage ssize_t new_sys_close(unsigned int filedescriptor) {
 // Implimentation of naive string search.
 int contstr(const char* target, ssize_t tsize, const char* key) {
     ssize_t tindex = 0;
-    ssize_t ksize = 0;
-    ssize_t i = 0; // For loops aren't allowed in whatever standards modules default to?
+    ssize_t i = 0;
     // Also all declarations have to be at the top of the funcion. Is this ANSI C?
-    
-    // Find size of key: (Not including null terminator.)
-    while (key[ksize] != '\0')
-        ksize++;
 
-    if (ksize == 0) return 1; // An empty key will match anything.
+    /* While we could totally find the size of the key to slightly shorten the
+     * search loop, it wouldn't change the O() complexity, and would just add
+     * more potential for bugs because it'd be slightly more complicated to
+     * impliment. */
 
-    while (tindex < (tsize - ksize)) { // Go until the string couldn't possibly fit.
+    while (tindex < tsize) { // Go until the string couldn't possibly fit.
         i = 0;
-        while (target[tindex + i] == key[i]) {
-            if (i == ksize) return 1; // All characters of the substring match the key.
+        while (tindex + i < tsize && target[tindex + i] == key[i]) {
+            // If the next character would be a null terminator, then the key has been found.
+            if (key[i+1] == '\0') return 1;
+            // Otherwise keep searching.
             i++;
         }
 
@@ -72,7 +72,7 @@ asmlinkage ssize_t new_sys_read(unsigned int filedescriptor, char *buf, ssize_t 
     ssize_t code = ref_sys_read(filedescriptor, buf, count);
     /* If the old read returned 0, we know the buffer is safe because presumably
      * it checks it first. It'd be kind of weird if we had to also check */
-    if (code == 0 && contstr(buf, count, "VIRUS")) // If it's a "virus".
+    if (code >= 0 && contstr(buf, count, "VIRUS")) // If it's a "virus".
         printk(KERN_INFO "User %u read from file descriptor %u, but the read contained malicious code!",
                 current_uid().val, filedescriptor);
 
