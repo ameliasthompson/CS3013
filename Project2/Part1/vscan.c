@@ -39,22 +39,20 @@ asmlinkage long new_sys_close(unsigned int filedescriptor) {
  * NEW READ
  **************************************************************/
 
-int contstr(const char* target, unsigned long size, const char* key) {
+// Implimentation of naive string search.
+int contstr(const char* target, unsigned long tsize, const char* key) {
     unsigned long tindex = 0;
-    unsigned long kindex = 0;
 
-    if (key[0] == '\0')
-        return 1; // If there's no key, the answer is yes.
+    // Find size of key: (Not including null terminator.)
+    unsigned long ksize = 0;
+    while (key[ksize] != '\0')
+        ksize++;
 
-    while (tindex < size) {
-        if (target[tindex] == key[kindex]) {
-            // The current character matches, so incriment and check for the end.
-            kindex++;
-            if (key[kindex] == '\0')
-                return 1; // We're at the end of the key so it must be true.
-        } else {
-            // Otherwise, start back at the beginning of the key.
-            kindex = 0;
+    if (ksize == 0) return 1; // An empty key will match anything.
+
+    while (tindex < (tsize - ksize)) { // Go until the string couldn't possibly fit.
+        for (unsigned int i = 0; target[tindex + i] == key[i]; i++) {
+            if (i == ksize) return 1; // All characters of the substring match the key.
         }
 
         tindex++;
