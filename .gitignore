@@ -6,6 +6,9 @@ seymour
 *.zip
 *.out
 
+# VSCode
+.vscode/
+
 # Module stuff
 Module.symvers
 modules.order
