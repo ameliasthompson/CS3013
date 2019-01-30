@@ -39,9 +39,37 @@ asmlinkage long new_sys_close(unsigned int filedescriptor) {
  * NEW READ
  **************************************************************/
 
+int contstr(const char* target, unsigned long size, const char* key) {
+    unsigned long tindex = 0;
+    unsigned long kindex = 0;
+
+    if (key[0] == '\0')
+        return 1; // If there's no key, the answer is yes.
+
+    while (tindex < size) {
+        if (target[tindex] == key[kindex]) {
+            // The current character matches, so incriment and check for the end.
+            kindex++;
+            if (key[kindex] == '\0')
+                return 1; // We're at the end of the key so it must be true.
+        } else {
+            // Otherwise, start back at the beginning of the key.
+            kindex = 0;
+        }
+
+        tindex++;
+    }
+
+    return 0; // No match was found.
+}
+
 asmlinkage long new_sys_read(unsigned int filedescriptor, char *buf, size_t count) {
-    //printk(KERN_INFO "\"'Hello world?!' More like 'Goodbye, world!' EXTERMINATE!\" -- Dalek");
-    return ref_sys_read(filedescriptor, buf, count);
+    long code = ref_sys_read(filedescriptor, buf, count);
+    if (contstr(buf, code, "VIRUS")) // If it's a "virus".
+        printk(KERN_INFO "User %u read from file descriptor %u, but the read contained malicious code!",
+                current_uid().val, filedescriptor);
+
+    return code;
 }
 
 /**************************************************************
