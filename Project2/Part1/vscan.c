@@ -7,16 +7,16 @@
 // References.
 unsigned long **sys_call_table;
 
-asmlinkage long (*ref_sys_open)(const char *filename, int flags, int mode);
-asmlinkage long (*ref_sys_close)(unsigned int filedescriptor);
-asmlinkage long (*ref_sys_read)(unsigned int filedescriptor, char *buf, size_t count);
+asmlinkage ssize_t (*ref_sys_open)(const char *filename, int flags, int mode);
+asmlinkage ssize_t (*ref_sys_close)(unsigned int filedescriptor);
+asmlinkage ssize_t (*ref_sys_read)(unsigned int filedescriptor, char *buf, size_t count);
 
 /**************************************************************
  * NEW OPEN
  **************************************************************/
 
 asmlinkage long new_sys_open(const char *filename, int flags, int mode) {
-    unsigned long code = ref_sys_open(filename, flags, mode);
+    ssize_t code = ref_sys_open(filename, flags, mode);
     kuid_t uid = current_uid();
     /* If open returned 0, then we know that the filename string is safe to read
      * otherwise the open call would have errored. */
@@ -30,7 +30,7 @@ asmlinkage long new_sys_open(const char *filename, int flags, int mode) {
  * NEW CLOSE
  **************************************************************/
 
-asmlinkage long new_sys_close(unsigned int filedescriptor) {
+asmlinkage ssize_t new_sys_close(unsigned int filedescriptor) {
     kuid_t uid = current_uid();
     if (uid.val >= 1000) // If it's a user.
         printk(KERN_INFO "User %u is closing file descriptor:  %u\n", uid.val, filedescriptor);
@@ -43,10 +43,10 @@ asmlinkage long new_sys_close(unsigned int filedescriptor) {
  **************************************************************/
 
 // Implimentation of naive string search.
-int contstr(const char* target, unsigned long tsize, const char* key) {
-    unsigned long tindex = 0;
-    unsigned long ksize = 0;
-    unsigned long i = 0; // For loops aren't allowed in whatever standards modules default to?
+int contstr(const char* target, ssize_t tsize, const char* key) {
+    ssize_t tindex = 0;
+    ssize_t ksize = 0;
+    ssize_t i = 0; // For loops aren't allowed in whatever standards modules default to?
     // Also all declarations have to be at the top of the funcion. Is this ANSI C?
     
     // Find size of key: (Not including null terminator.)
@@ -68,8 +68,8 @@ int contstr(const char* target, unsigned long tsize, const char* key) {
     return 0; // No match was found.
 }
 
-asmlinkage long new_sys_read(unsigned int filedescriptor, char *buf, size_t count) {
-    long code = ref_sys_read(filedescriptor, buf, count);
+asmlinkage ssize_t new_sys_read(unsigned int filedescriptor, char *buf, ssize_t count) {
+    ssize_t code = ref_sys_read(filedescriptor, buf, count);
     /* If the old read returned 0, we know the buffer is safe because presumably
      * it checks it first. It'd be kind of weird if we had to also check */
     if (code == 0 && contstr(buf, count, "VIRUS")) // If it's a "virus".
