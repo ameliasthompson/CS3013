@@ -42,17 +42,21 @@ asmlinkage long new_sys_close(unsigned int filedescriptor) {
 // Implimentation of naive string search.
 int contstr(const char* target, unsigned long tsize, const char* key) {
     unsigned long tindex = 0;
-
-    // Find size of key: (Not including null terminator.)
     unsigned long ksize = 0;
+    unsigned long i = 0; // For loops aren't allowed in whatever standards modules default to?
+    // Also all declarations have to be at the top of the funcion. Is this ANSI C?
+    
+    // Find size of key: (Not including null terminator.)
     while (key[ksize] != '\0')
         ksize++;
 
     if (ksize == 0) return 1; // An empty key will match anything.
 
     while (tindex < (tsize - ksize)) { // Go until the string couldn't possibly fit.
-        for (unsigned int i = 0; target[tindex + i] == key[i]; i++) {
+        i = 0;
+        while (target[tindex + i] == key[i]) {
             if (i == ksize) return 1; // All characters of the substring match the key.
+            i++;
         }
 
         tindex++;
