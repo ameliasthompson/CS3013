@@ -16,11 +16,14 @@ asmlinkage long (*ref_sys_read)(unsigned int filedescriptor, char *buf, size_t c
  **************************************************************/
 
 asmlinkage long new_sys_open(const char *filename, int flags, int mode) {
+    unsigned long code = ref_sys_open(filename, flags, mode);
     kuid_t uid = current_uid();
-    if (uid.val >= 1000) // If it's a user.
+    /* If open returned 0, then we know that the filename string is safe to read
+     * otherwise the open call would have errored. */
+    if (code == 0 && uid.val >= 1000) // If it's a user.
         printk(KERN_INFO "User %u is opening file:  %s\n", uid.val, filename);
     
-    return ref_sys_open(filename, flags, mode);
+    return code;
 }
 
 /**************************************************************
@@ -67,7 +70,9 @@ int contstr(const char* target, unsigned long tsize, const char* key) {
 
 asmlinkage long new_sys_read(unsigned int filedescriptor, char *buf, size_t count) {
     long code = ref_sys_read(filedescriptor, buf, count);
-    if (contstr(buf, code, "VIRUS")) // If it's a "virus".
+    /* If the old read returned 0, we know the buffer is safe because presumably
+     * it checks it first. It'd be kind of weird if we had to also check */
+    if (code == 0 && contstr(buf, count, "VIRUS")) // If it's a "virus".
         printk(KERN_INFO "User %u read from file descriptor %u, but the read contained malicious code!",
                 current_uid().val, filedescriptor);
 
