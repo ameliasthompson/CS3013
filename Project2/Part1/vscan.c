@@ -21,7 +21,7 @@ asmlinkage long new_sys_open(const char *filename, int flags, int mode) {
     /* If open returned 0, then we know that the filename string is safe to read
      * otherwise the open call would have errored. */
     if (code >= 0 && uid.val >= 1000) // If it's a user.
-        printk(KERN_INFO "User %u is opening file:  %s\n", uid.val, filename);
+        printk(KERN_INFO "User %u is opening file descriptor %u:  %s\n", uid.val, code, filename);
     
     return code;
 }
