@@ -25,17 +25,17 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     int i;
     
     // Get the target pid.
-    printk(KERN_INFO, "ANCESTRY: Retreiving PID");
+    printk(KERN_INFO "ANCESTRY: Retreiving PID");
     if (copy_from_user(&target, pid, sizeof(pid_t)) != 0)
         return -1; // Die if the pid isn't good.
     
     // Try to find the targeted PID.
-    printk(KERN_INFO, "ANCESTRY: Finding task");
+    printk(KERN_INFO "ANCESTRY: Finding task");
     task = pid_task(find_vpid(target), PIDTYPE_PID);
     if (task == NULL) return -1; // If it wasn't found.
 
     // Get all the children.
-    printk(KERN_INFO, "ANCESTRY: Indexing children");
+    printk(KERN_INFO "ANCESTRY: Indexing children");
     cur = NULL;
     i = 0;
     list_for_each(cur, &task->children) {
@@ -44,7 +44,7 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     }
 
     // Get all the siblings.
-    printk(KERN_INFO, "ANCESTRY: Indexing siblings");
+    printk(KERN_INFO "ANCESTRY: Indexing siblings");
     cur = NULL;
     i = 0;
     list_for_each(cur, &task->parent->children) {
@@ -53,19 +53,19 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     }
 
     // Get all the parents.
-    printk(KERN_INFO, "ANCESTRY: Indexing ancestors");
+    printk(KERN_INFO "ANCESTRY: Indexing ancestors");
     i = 0;
     while (task->parent != NULL && i < 10) {
         task = task->parent;
         ancestry.ancestors[i++] = task->pid;
     }
 
-    printk(KERN_INFO, "ANCESTRY: Returning data");
+    printk(KERN_INFO "ANCESTRY: Returning data");
     // Return the data.
     if (copy_to_user(response, &ancestry, sizeof(ancestry_t)) != 0)
         return -1; // Die if we failed to return everything.
 
-    printk(KERN_INFO, "ANCESTRY: Exiting normally");
+    printk(KERN_INFO "ANCESTRY: Exiting normally");
     return 0;
 }
 
