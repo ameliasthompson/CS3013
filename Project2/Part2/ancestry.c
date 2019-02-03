@@ -15,9 +15,16 @@ typedef struct {
     pid_t children[100];
 } ancestry_t;
 
+void init_ancestry(ancestry_t* a) {
+    for (int i = 0; i < 10; i++) a->ancestors[i] = 0;
+    for (int i = 0; i < 100; i++) a->siblings[i] = 0;
+    for (int i = 0; i < 100; i++) a->children[i] = 0;
+}
+
 int main () {
     pid_t target = getpid();
-    ancestry_t* ancestry;
+    ancestry_t ancestry;
+    init_ancestry(&ancestry);
     long code = syscall(__NR_cs3013_syscall2, &target, &ancestry);
 
     if (code < 0) {
