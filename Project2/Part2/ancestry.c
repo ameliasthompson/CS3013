@@ -16,7 +16,7 @@ typedef struct {
 } ancestry_t;
 
 int main () {
-    pid_t target = 123;
+    pid_t target = getpid();
     ancestry_t* ancestry;
     long code = syscall(__NR_cs3013_syscall2, &target, &ancestry);
 
