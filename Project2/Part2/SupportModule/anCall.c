@@ -20,7 +20,7 @@ typedef struct {
 
 asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     pid_t* target = kmalloc(sizeof(pid_t), GFP_KERNEL);             // The target PID.
-    ancestry_t ancestry;      // The ancestry to return.
+    ancestry_t* ancestry = kmalloc(sizeof(ancestry_t), GFP_KERNEL);      // The ancestry to return.
     struct task_struct* task;
     struct list_head* cur;
     int i;
@@ -40,7 +40,7 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     cur = NULL;
     i = 0;
     list_for_each(cur, &task->children) {
-        ancestry.children[i++] = list_entry(cur, struct task_struct, sibling)->pid;
+        ancestry->children[i++] = list_entry(cur, struct task_struct, sibling)->pid;
         if (i >= 100) break; // Break if we hit the bounds.
     }
 
@@ -49,7 +49,7 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     cur = NULL;
     i = 0;
     list_for_each(cur, &task->parent->children) {
-        ancestry.siblings[i++] = list_entry(cur, struct task_struct, sibling)->pid;
+        ancestry->siblings[i++] = list_entry(cur, struct task_struct, sibling)->pid;
         if (i >= 100) break; // Break if we hit the bounds.
     }
 
@@ -58,12 +58,12 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     i = 0;
     while (task->parent != NULL && i < 10) {
         task = task->parent;
-        ancestry.ancestors[i++] = task->pid;
+        ancestry->ancestors[i++] = task->pid;
     }
 
     printk(KERN_INFO "ANCESTRY: Returning data");
     // Return the data.
-    if (copy_to_user(response, &ancestry, sizeof(ancestry_t)) != 0)
+    if (copy_to_user(response, ancestry, sizeof(ancestry_t)) != 0)
         return -1; // Die if we failed to return everything.
 
     printk(KERN_INFO "ANCESTRY: Exiting normally");
