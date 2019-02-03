@@ -2,6 +2,8 @@ mc0
 mc1
 mc2
 seymour
+ancestry
+test*
 *.o
 *.zip
 *.out
