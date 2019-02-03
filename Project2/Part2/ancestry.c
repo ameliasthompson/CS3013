@@ -40,7 +40,7 @@ void print_children(ancestry_t* a) {
 void print_ancestors(ancestry_t* a) {
     printf("ANCESTORS:\n");
     for (int i = 9; i >= 0; i--)
-        if (a->ancestors[i] != -1)
+        if (a->ancestors[i] > 0)
             printf("%d -> ", a->ancestors[i]);
     
     printf("{target}\n\n");

@@ -30,6 +30,11 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     if (copy_from_user(target, pid, sizeof(pid_t)) != 0)
         return -1; // Die if the pid isn't good.
     
+    // Retrieve target struct.
+    printk(KERN_INFO "ANCESTRY: Retreiving response struct");
+    if (copy_from_user(ancestry, response, sizeof(ancestry_t)) != 0)
+        return -1; // Die if it didn't work.
+    
     // Try to find the targeted PID.
     printk(KERN_INFO "ANCESTRY: Finding task");
     task = pid_task(find_vpid(*target), PIDTYPE_PID);
