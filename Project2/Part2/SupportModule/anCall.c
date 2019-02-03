@@ -4,6 +4,7 @@
 #include <linux/module.h>
 #include <linux/syscalls.h>
 #include <linux/sched.h>
+#include <linux/slab.h>
 #include <linux/uaccess.h>
 #include <linux/list.h>
 
@@ -18,7 +19,7 @@ typedef struct {
 } ancestry_t;
 
 asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
-    pid_t target;             // The target PID.
+    pid_t* target = kmalloc(sizeof(pid_t), GFP_KERNEL);             // The target PID.
     ancestry_t ancestry;      // The ancestry to return.
     struct task_struct* task;
     struct list_head* cur;
@@ -26,12 +27,12 @@ asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
     
     // Get the target pid.
     printk(KERN_INFO "ANCESTRY: Retreiving PID");
-    if (copy_from_user(&target, pid, sizeof(pid_t)) != 0)
+    if (copy_from_user(target, pid, sizeof(pid_t)) != 0)
         return -1; // Die if the pid isn't good.
     
     // Try to find the targeted PID.
     printk(KERN_INFO "ANCESTRY: Finding task");
-    task = pid_task(find_vpid(target), PIDTYPE_PID);
+    task = pid_task(find_vpid(*target), PIDTYPE_PID);
     if (task == NULL) return -1; // If it wasn't found.
 
     // Get all the children.
