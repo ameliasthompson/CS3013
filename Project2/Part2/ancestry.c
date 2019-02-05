@@ -46,8 +46,18 @@ void print_ancestors(ancestry_t* a) {
     printf("{target}\n\n");
 }
 
-int main () {
-    pid_t target = getpid();
+int main (int argc, char** argv) {
+    // Check number of arguments.
+    if (argc != 2) {
+        printf("Improper number of arguments.\n");
+        exit(-1);
+    }
+
+    // Read input.
+    pid_t target = atoi(argv[1]);
+    printf("Target: %d\n", target);
+
+    // Get ancestry.
     ancestry_t ancestry;
     init_ancestry(&ancestry);
     long code = syscall(__NR_cs3013_syscall2, &target, &ancestry);
@@ -57,6 +67,7 @@ int main () {
         abort();
     }
 
+    // Print ancestry.
     print_children(&ancestry);
     print_siblings(&ancestry);
     print_ancestors(&ancestry);
