@@ -19,59 +19,71 @@ typedef struct {
 } ancestry_t;
 
 asmlinkage long new_sys_cs3013_syscall2(pid_t* pid, ancestry_t* response) {
-    pid_t* target = kmalloc(sizeof(pid_t), GFP_KERNEL);             // The target PID.
-    ancestry_t* ancestry = kmalloc(sizeof(ancestry_t), GFP_KERNEL);      // The ancestry to return.
+    pid_t target;             // The target PID.
+    ancestry_t ancestry;      // The ancestry to return.
     struct task_struct* task;
     struct list_head* cur;
     int i;
     
     // Get the target pid.
-    printk(KERN_INFO "ANCESTRY: Retreiving PID");
-    if (copy_from_user(target, pid, sizeof(pid_t)) != 0)
+    //printk(KERN_INFO "ANCESTRY: Retreiving PID");
+    if (copy_from_user(&target, pid, sizeof(pid_t)) != 0)
         return -1; // Die if the pid isn't good.
-    
+
     // Retrieve target struct.
-    printk(KERN_INFO "ANCESTRY: Retreiving response struct");
-    if (copy_from_user(ancestry, response, sizeof(ancestry_t)) != 0)
+    //printk(KERN_INFO "ANCESTRY: Retreiving response struct");
+    if (copy_from_user(&ancestry, response, sizeof(ancestry_t)) != 0)
         return -1; // Die if it didn't work.
     
     // Try to find the targeted PID.
-    printk(KERN_INFO "ANCESTRY: Finding task");
-    task = pid_task(find_vpid(*target), PIDTYPE_PID);
+    //printk(KERN_INFO "ANCESTRY: Finding task");
+    task = pid_task(find_vpid(target), PIDTYPE_PID);
     if (task == NULL) return -1; // If it wasn't found.
 
+    printk(KERN_INFO "ANCESTRY: Found target: %d\n", target);
+
     // Get all the children.
-    printk(KERN_INFO "ANCESTRY: Indexing children");
+    //printk(KERN_INFO "ANCESTRY: Indexing children");
     cur = NULL;
     i = 0;
     list_for_each(cur, &task->children) {
-        ancestry->children[i++] = list_entry(cur, struct task_struct, sibling)->pid;
+        ancestry.children[i] = list_entry(cur, struct task_struct, sibling)->pid;
+        printk(KERN_INFO "ANCESTRY: Found child: %d\n", ancestry.children[i]);
+        i++;
+
         if (i >= 100) break; // Break if we hit the bounds.
     }
 
     // Get all the siblings.
-    printk(KERN_INFO "ANCESTRY: Indexing siblings");
+    //printk(KERN_INFO "ANCESTRY: Indexing siblings");
     cur = NULL;
     i = 0;
     list_for_each(cur, &task->parent->children) {
-        ancestry->siblings[i++] = list_entry(cur, struct task_struct, sibling)->pid;
+        ancestry.siblings[i] = list_entry(cur, struct task_struct, sibling)->pid;
+        printk(KERN_INFO "ANCESTRY: Found sibling: %d\n", ancestry.siblings[i]);
+        i++;
+
         if (i >= 100) break; // Break if we hit the bounds.
     }
 
     // Get all the parents.
-    printk(KERN_INFO "ANCESTRY: Indexing ancestors");
+    //printk(KERN_INFO "ANCESTRY: Indexing ancestors");
     i = 0;
     while (task->parent != NULL && i < 10) {
         task = task->parent;
-        ancestry->ancestors[i++] = task->pid;
+        ancestry.ancestors[i] = task->pid;
+        if (ancestry.ancestors[i] == 0) break; // Break if we're past init.
+        printk(KERN_INFO "ANCESTRY: Found ancestor: %d\n", ancestry.ancestors[i]);
+
+        i++;
     }
 
-    printk(KERN_INFO "ANCESTRY: Returning data");
+    //printk(KERN_INFO "ANCESTRY: Returning data");
     // Return the data.
-    if (copy_to_user(response, ancestry, sizeof(ancestry_t)) != 0)
+    if (copy_to_user(response, &ancestry, sizeof(ancestry_t)) != 0)
         return -1; // Die if we failed to return everything.
 
-    printk(KERN_INFO "ANCESTRY: Exiting normally");
+    //printk(KERN_INFO "ANCESTRY: Exiting normally");
     return 0;
 }
 
