@@ -1,4 +1,4 @@
-obj-m := anCall.o
+obj-m := mod.o
 KDIR := /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
 
