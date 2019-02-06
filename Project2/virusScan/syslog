@@ -1,0 +1,20 @@
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is opening file descriptor 3:  aVirus
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 read from file descriptor 3, but the read contained malicious code!
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 read from file descriptor 3, but the read contained malicious code!
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  3
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  1
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  2
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  3
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  4
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 read from file descriptor 14, but the read contained malicious code!
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  4
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  3
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is opening file descriptor 3:  /etc/ld.so.cache
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  3
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is opening file descriptor 3:  /lib/i386-linux-gnu/libc.so.6
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  3
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is opening file descriptor 3:  /usr/lib/locale/locale-archive
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  3
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is opening file descriptor 3:  notAVirus
+Feb 05 19:28:10 amelia-VirtualBox kernel: User 1000 is closing file descriptor:  3
+

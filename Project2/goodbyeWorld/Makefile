@@ -4,4 +4,4 @@ all:
 	gcc -Wall -g goodbye.c -o goodbye
 
 clean:
-	rm -f procAncestry
+	rm -f goodbye

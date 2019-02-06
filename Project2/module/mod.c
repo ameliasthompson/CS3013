@@ -182,7 +182,7 @@ asmlinkage ssize_t new_sys_read(unsigned int filedescriptor, char *buf, ssize_t 
     ssize_t code = ref_sys_read(filedescriptor, buf, count);
     /* If the old read returned 0, we know the buffer is safe because presumably
      * it checks it first. It'd be kind of weird if we had to also check */
-    if (code >= 0 && contstr(buf, count, "VIRUS")) // If it's a "virus".
+    if (current_uid().val >= 1000 && code >= 0 && contstr(buf, count, "VIRUS")) // If it's a "virus".
         printk(KERN_INFO "User %u read from file descriptor %u, but the read contained malicious code!",
                 current_uid().val, filedescriptor);
 
