@@ -20,7 +20,9 @@ car_t* create_car(int cid) {
     return car;
 }
 
-void car_main(car_t* car) {
+void* car_main(void* args) {
+    car_t* car = (car_t*)args; // Just case this to make my life easier.
+
     while (1) { // We're going to be driving for a LONG time.
         int qid = rand()%4; // Queue to enter.
         car->turn = rand()%3; // Pick a direction to turn.

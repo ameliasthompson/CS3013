@@ -34,7 +34,12 @@ int main() {
     pthread_mutex_unlock(&intersectionLock); // Now the cars can go!
 
     // Sleep forever.
-    pthread_cond_wait(NULL, NULL);
+    pthread_mutex_t mainMutex;
+    pthread_cond_t mainCond;
+    pthread_mutex_init(&mainMutex, NULL);
+    pthread_cond_init(&mainCond, NULL);
+    pthread_mutex_lock(&mainMutex);
+    pthread_cond_wait(&mainCond, &mainMutex);
 
     return 0; // Never going to happen. :c
 }

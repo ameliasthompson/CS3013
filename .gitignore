@@ -3,6 +3,7 @@ mc1
 mc2
 seymour
 ancestry
+drivers
 test*
 *.o
 *.zip

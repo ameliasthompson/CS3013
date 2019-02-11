@@ -5,16 +5,18 @@
 
 #include <pthread.h>
 #include <stdlib.h>
-#include <time.h>
+#include <unistd.h>
 
 #include "constants.h"
 
-typedef struct {
-    int cid;             // Car ID.
-    int turn;            // Where the car is turning.
-    car_t* next;         // Used for queue linked list.
-    pthread_cond_t cond; // Used when the car is waiting in a queue, or waiting for the intersection. (Never for both).
-} car_t;
+struct carstruct {
+    int cid;                // Car ID.
+    int turn;               // Where the car is turning.
+    struct carstruct* next; // Used for queue linked list.
+    pthread_cond_t cond;    // Used when the car is waiting in a queue, or waiting for the intersection. (Never for both).
+};
+
+typedef struct carstruct car_t;
 
 /**
  * Create a car strict.
@@ -24,11 +26,11 @@ typedef struct {
 car_t* create_car(int cid);
 
 /**
- * The main function for a car thread. Handles 
- * 
- * @param car The car that this thread is.
+ * The main function for a car thread. Handles the sequencing of car related
+ * events. No, we're not there yet. 
+ * @param arg The car that this thread is.
  */
-void car_main(car_t* car);
+void* car_main(void* car);
 
 /**
  * Add the car to a queue.
