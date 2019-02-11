@@ -4,7 +4,7 @@
 
 all: drivers
 
-drivers: carThread.c carThread.h constants.h intersection.c
+drivers: carThread.c carThread.h constants.c constants.h intersection.c
 	gcc -g -Wall -pthread *.c -o drivers
 
 clean:

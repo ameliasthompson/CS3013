@@ -13,6 +13,27 @@ car_t* queue[4];                  // The queues of cars.
 
 int quadrant[4];                  // What car is occupying each quadrant.
 
+char* qstate() {
+    static char buf[100];
+    sprintf(buf, "%d,%d,%d,%d", quadrant[0], quadrant[1], quadrant[2], quadrant[3]);
+    return buf;
+}
+
+char* queuestate() {
+    static char buf[100];
+    static int state[4];
+    for (int i = 0; i < 4; i++) {
+        if (pthread_mutex_trylock(&queueLock[i])) {
+            state[i] = 0; // Is unlocked.
+            pthread_mutex_unlock(&queueLock[i]);
+        } else {
+            state[i] = 1; // Is locked.
+        }
+    }
+    sprintf(buf, "%d,%d,%d,%d", state[0], state[1], state[2], state[3]);
+    return buf;
+}
+
 int main() {
     srand(time(NULL)); // Seed random number generator.
 

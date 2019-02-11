@@ -35,6 +35,9 @@ void* car_main(void* args) {
         while (car->turn == WLEFT || car->turn == WSTRAIGHT || car->turn == WRIGHT) // Loop to prevent spurious wakeups.
             if (!enter_intersection(car, qid)) // Actually attempt to enter the intersection.
                 pthread_cond_wait(&car->cond, &intersectionLock); // Sleep if we failed.
+
+        // Now we go and actually take the locks from the intersection.
+        aquire_locks(car);
         pthread_mutex_unlock(&intersectionLock);
 
         usleep(SLEEPTIME); // Go to sleep in the intersection.
@@ -44,6 +47,8 @@ void* car_main(void* args) {
         pthread_mutex_unlock(&intersectionLock);
 
         dequeue_car(qid); // Move the next car to the front of the queue it came from.
+
+        usleep(RECYCLETIME); // Wait a bit before coming back.
     }
 }
 
@@ -57,7 +62,9 @@ void queue_car(car_t* car, int qid) {
         while (cur->next != NULL) cur = cur->next; // Go to the end.
         cur->next = car; // Add the car.
     }
-    pthread_mutex_unlock(&queueLock[qid]); // And we're done, so let og.
+
+    printf("Car %d is approaching from the %s.\n", car->cid, convert_direction(qid));
+    pthread_mutex_unlock(&queueLock[qid]); // And we're done, so let go.
 }
 
 void wait_for_queue(car_t* car, int qid) {
@@ -65,10 +72,12 @@ void wait_for_queue(car_t* car, int qid) {
     while (queue[qid] != car) // Loop while it isn't the front of the queue.
         pthread_cond_wait(&car->cond, &queueLock[qid]);
     
+    printf("Car %d arrived at the %s side of the intersection.\n", car->cid, convert_direction(qid));
     pthread_mutex_unlock(&queueLock[qid]); // Stop accessing the queue.
 }
 
 int enter_intersection(car_t* car, int qid) {
+    printf("DEBUG: Car %d is attempting to route the intersection turning %s(%d).\n", car->cid, convert_turn(car->turn), car->turn);
     if (car->turn == NO_TURN)
         return 0; // We just called this 'from' this car.
 
@@ -144,7 +153,6 @@ int enter_intersection(car_t* car, int qid) {
     if (car->turn == WLEFT || car->turn == WSTRAIGHT || car->turn == WRIGHT) {
         for (int i = 0; i < 4; i++) {
             if (quadrant[i] == car->cid) {
-                pthread_mutex_unlock(&quadrantLock[i]);
                 quadrant[i] = -1;
             }
         }
@@ -154,18 +162,15 @@ int enter_intersection(car_t* car, int qid) {
     // Or else, we actually do want to turn, so if someone else is doing this they
     // should wake us up.
     } else {
+        printf("Car %d has entered the intersection from the %s going %s.\n", car->cid, convert_direction(qid), convert_turn(car->turn));
         pthread_cond_signal(&car->cond);
         return 1; // And we did enter, so return true.
     }
 }
 
 int attempt_quadrant(car_t* car, int quad) {
-    // This has a slightly higher potential to deadlock, but honestly that just
-    // lets me know that I'm doing something wrong. Not something to do for
-    // something in production though.
     if (quadrant[quad] == -1) {
         // The quadrant hopefully isn't occupied!!!
-        pthread_mutex_lock(&quadrantLock[quad]);
         quadrant[quad] = car->cid;
         return 1;
     } else {
@@ -173,10 +178,21 @@ int attempt_quadrant(car_t* car, int quad) {
     }
 }
 
-void leave_intersection(car_t* car) {
-    // First, we free everything we're using.
+void aquire_locks(car_t* car) {
     for (int i = 0; i < 4; i++)
-        if (quadrant[i] == car->cid) pthread_mutex_unlock(&quadrantLock[i]);
+        if (quadrant[i] == car->cid)
+            pthread_mutex_lock(&quadrantLock[i]);
+}
+
+void leave_intersection(car_t* car) {
+    printf("Car %d has left the intersection.\n", car->cid);
+    // First, we free everything we're using.
+    for (int i = 0; i < 4; i++) {
+        if (quadrant[i] == car->cid) {
+            pthread_mutex_unlock(&quadrantLock[i]);
+            quadrant[i] = -1;
+        } 
+    }
     
     // Then we stop turning.
     car->turn = NO_TURN;
@@ -184,8 +200,13 @@ void leave_intersection(car_t* car) {
     // Now we go push some sleeping person's car into the middle of the intersection.
     // This IS going to call it on this car too, which kinda sucks, but it won't do
     // anything we because we went and set our turn to NO_TURN.
-    for(int i = 0; i < 4; i++)
-        if (queue[i] != NULL) enter_intersection(queue[i], i);
+    for(int i = 0; i < 4; i++) {
+        pthread_mutex_lock(&queueLock[i]);
+        if (queue[i] != NULL) {
+            enter_intersection(queue[i], i);
+        }
+        pthread_mutex_unlock(&queueLock[i]);
+    }
 }
 
 void dequeue_car(int qid) {

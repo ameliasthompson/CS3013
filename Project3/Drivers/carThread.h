@@ -5,6 +5,7 @@
 
 #include <pthread.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
 
 #include "constants.h"
@@ -49,14 +50,6 @@ void queue_car(car_t* car, int qid);
 void wait_for_queue(car_t* car, int qid);
 
 /**
- * Attempt to obtain mutexs for all quadrants it passes through. If it fails,
- * sleep until someone finishes in the intersection and wakes it up.
- * @param car The car that's driving.
- * @param qid The ID of the queue the car is coming from.
- */
-void drive(car_t* car, int qid);
-
-/**
  * Big switch statements for turning.
  * @param car The car that is turning.
  * @param qid The ID of the queue the car is coming from.
@@ -65,14 +58,20 @@ void drive(car_t* car, int qid);
 int enter_intersection(car_t* car, int qid);
 
 /**
- * Attempt to take the lock for a quadrant. If successful, set the metadata
- * on that quadrant to the car ID. Otherwise, leave everything as it is and
- * return -1.
+ * Check to see if the lock for the quadrant is available by reading the quadrant
+ * owner. If it is available, become the owner and return 1. Otherwise do nothing
+ * and return 0.
  * @param car  The car taking the quadrant.
  * @param quad The quadrant to take.
  * @return int Failure or success.
  */
 int attempt_quadrant(car_t* car, int quad);
+
+/**
+ * Aquires all the locks enter_intersection promises it.
+ * @param car The car entering the intersection.
+ */
+void aquire_locks(car_t* car);
 
 /**
  * Free the quadrants the car occupies, and then try to see if the other cars

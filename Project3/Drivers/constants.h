@@ -5,7 +5,8 @@
 
 // Constants.
 #define NUM_CARS    20
-#define SLEEPTIME   (20*1000000)
+#define SLEEPTIME   1
+#define RECYCLETIME 1
 
 // Turn enumeration.
 #define NO_TURN    -1
@@ -29,5 +30,9 @@
 #define S           1
 #define E           2
 #define W           3
+
+// Helper functions.
+char* convert_direction(int d);
+char* convert_turn(int t);
 
 #endif
