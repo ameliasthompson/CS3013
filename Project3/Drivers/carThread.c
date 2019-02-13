@@ -53,6 +53,9 @@ void* car_main(void* args) {
 }
 
 void queue_car(car_t* car, int qid) {
+    #ifdef _DEBUG
+        printf("DEBUG: (queue_car) Taking qid %d.\n", qid);
+    #endif
     pthread_mutex_lock(&queueLock[qid]); // Get the lock to change the queue.
     if (queue[qid] == NULL) { // If the queue is empty.
         queue[qid] = car;
@@ -64,6 +67,9 @@ void queue_car(car_t* car, int qid) {
     }
 
     printf("Car %d is approaching from the %s.\n", car->cid, convert_direction(qid));
+    #ifdef _DEBUG
+        printf("DEBUG: (queue_car) Dropping qid %d.\n", qid);
+    #endif
     pthread_mutex_unlock(&queueLock[qid]); // And we're done, so let go.
 }
 
@@ -77,7 +83,10 @@ void wait_for_queue(car_t* car, int qid) {
 }
 
 int enter_intersection(car_t* car, int qid) {
-    printf("DEBUG: Car %d is attempting to route the intersection turning %s(%d).\n", car->cid, convert_turn(car->turn), car->turn);
+    #ifdef _DEBUG
+        printf("DEBUG: Car %d is attempting to route the intersection turning %s(%d).\n", car->cid, convert_turn(car->turn), car->turn);
+    #endif
+
     if (car->turn == NO_TURN)
         return 0; // We just called this 'from' this car.
 
@@ -201,19 +210,33 @@ void leave_intersection(car_t* car) {
     // This IS going to call it on this car too, which kinda sucks, but it won't do
     // anything we because we went and set our turn to NO_TURN.
     for(int i = 0; i < 4; i++) {
+        #ifdef _DEBUG
+            printf("DEBUG: (leave_intersection) Taking qid %d.\n", i);
+        #endif
         pthread_mutex_lock(&queueLock[i]);
         if (queue[i] != NULL) {
             enter_intersection(queue[i], i);
         }
+        #ifdef _DEBUG
+            printf("DEBUG: (leave_intersection) Dropping qid %d.\n", i);
+        #endif
         pthread_mutex_unlock(&queueLock[i]);
     }
 }
 
 void dequeue_car(int qid) {
+    #ifdef _DEBUG
+        printf("DEBUG: (dequeue_car) Taking qid %d.\n", qid);
+    #endif
     pthread_mutex_lock(&queueLock[qid]); // Get the lock to change the queue.
-    queue[qid] = queue[qid]->next; // Move the queue.
+    car_t* tmp = queue[qid];
+    queue[qid] = tmp->next; // Move the queue.
+    tmp->next = NULL;
     if (queue[qid] != NULL)
         pthread_cond_signal(&queue[qid]->cond); // Wake the car.
     
+    #ifdef _DEBUG
+        printf("DEBUG: (dequeue car) Dropping qid %d.\n", qid);
+    #endif
     pthread_mutex_unlock(&queueLock[qid]); // Stop touching the queue.
 }
