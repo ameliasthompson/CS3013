@@ -4,6 +4,7 @@ mc2
 seymour
 ancestry
 drivers
+pvn
 test*
 *.o
 *.zip
