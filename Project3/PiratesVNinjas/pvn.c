@@ -20,6 +20,14 @@ human_t* ninjas[50];
 pthread_t pirThreads[50];
 pthread_t ninThreads[50];
 
+#ifdef _DEBUG
+int check_sem(sem_t* sem) {
+    int v;
+    sem_getvalue(sem, &v);
+    return v;
+}
+#endif
+
 int main (int argc, char** argv) {
     srand48(time(NULL));
     sem_init(&queueSem[0], 0, 1);
@@ -28,10 +36,10 @@ int main (int argc, char** argv) {
 
     // DO INPUT
     int numPirates = 10;
-    int avgPCostume = 8;
-    int avgPAdventure = 15;
-    int avgNCostume = 4;
-    int avgNAdventure = 20;
+    int avgPCostume = 12;
+    int avgPAdventure = 8;
+    int avgNCostume = 8;
+    int avgNAdventure = 12;
     int numNinjas = 10;
     int numChairs = 2;
 
@@ -50,7 +58,7 @@ int main (int argc, char** argv) {
     // Get the party started.
     for (int i = 0; i < 50; i++) {
         if (i < numPirates) {
-            pirates[i] = create_human(PIRATE, avgPCostume, avgPAdventure);
+            pirates[i] = create_human(i, PIRATE, avgPCostume, avgPAdventure);
             pthread_create(&pirThreads[i], NULL, human_main, pirates[i]);
         } else {
             pirates[i] = NULL;
@@ -58,7 +66,7 @@ int main (int argc, char** argv) {
         }
 
         if (i < numNinjas) {
-            ninjas[i] = create_human(NINJA, avgNCostume, avgNAdventure);
+            ninjas[i] = create_human(i + 50, NINJA, avgNCostume, avgNAdventure);
             pthread_create(&ninThreads[i], NULL, human_main, ninjas[i]);
         } else {
             pirates[i] = NULL;
@@ -66,6 +74,10 @@ int main (int argc, char** argv) {
     }
 
     while (visitsLeft > 0) sched_yield();
+
+    #ifdef _DEBUG
+        printf("DEBUG: Finished servicing all people.\n");
+    #endif
 
     return 0;
 }

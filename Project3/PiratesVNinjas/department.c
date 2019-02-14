@@ -42,3 +42,16 @@ int all_empty(department_t* dept) {
     
     return 1;
 }
+
+int team_alignment(department_t* dept) {
+    switch (dept->alignment) {
+    case PIRATE:
+    case TO_PIRATE:
+        return PIRATE;
+    case NINJA:
+    case TO_NINJA:
+        return NINJA;
+    default:
+        return -1;
+    }
+}

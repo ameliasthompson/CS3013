@@ -36,6 +36,7 @@ typedef struct visit {
 } visit_t;
 
 typedef struct human {
+    int id;
     int alignment;      // Pirate or ninja?
     int avgCostume;     // Average time spent inside.
     int avgAdventure;   // Average time spent outside before arriving.
@@ -53,7 +54,7 @@ typedef struct human {
  * @param avgAdventure The average time spent adventuring.
  * @return human_t*    The freshly allocated human.
  */
-human_t* create_human(int alignment, int avgCostume, int avgAdventure);
+human_t* create_human(int id, int alignment, int avgCostume, int avgAdventure);
 
 /**
  * Allocate and initialize a visit struct.
