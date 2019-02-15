@@ -1,0 +1,299 @@
+amelia@amelia-VirtualBox:~/CS3013/Project3/PiratesVNinjas$ ./pvn 2 10 10 4 4 4 4DEBUG: New member of team PIRATE with ID 3.
+DEBUG: PIRATE 3 is adventuring for 4 seconds.
+DEBUG: New member of team NINJA with ID 53.
+DEBUG: NINJA 53 is adventuring for 3 seconds.
+DEBUG: New member of team PIRATE with ID 4.
+DEBUG: PIRATE 4 is adventuring for 5 seconds.
+DEBUG: New member of team NINJA with ID 54.
+DEBUG: NINJA 54 is adventuring for 3 seconds.
+DEBUG: New member of team NINJA with ID 51.
+DEBUG: NINJA 51 is adventuring for 8 seconds.
+DEBUG: New member of team PIRATE with ID 2.
+DEBUG: PIRATE 2 is adventuring for 4 seconds.
+DEBUG: New member of team PIRATE with ID 5.
+DEBUG: PIRATE 5 is adventuring for 0 seconds.
+DEBUG: New member of team NINJA with ID 52.
+DEBUG: NINJA 52 is adventuring for 3 seconds.
+DEBUG: New member of team NINJA with ID 55.
+DEBUG: NINJA 55 is adventuring for 2 seconds.
+DEBUG: New member of team PIRATE with ID 6.
+DEBUG: PIRATE 6 is adventuring for 4 seconds.
+DEBUG: New member of team PIRATE with ID 1.
+DEBUG: PIRATE 1 is adventuring for 1 seconds.
+DEBUG: New member of team NINJA with ID 56.
+DEBUG: NINJA 56 is adventuring for 4 seconds.
+DEBUG: New member of team PIRATE with ID 7.
+DEBUG: PIRATE 7 is adventuring for 5 seconds.
+DEBUG: New member of team NINJA with ID 57.
+DEBUG: NINJA 57 is adventuring for 4 seconds.
+DEBUG: New member of team PIRATE with ID 8.
+DEBUG: PIRATE 8 is adventuring for 4 seconds.
+DEBUG: New member of team NINJA with ID 59.
+DEBUG: NINJA 59 is adventuring for 3 seconds.
+DEBUG: New member of team NINJA with ID 58.
+DEBUG: NINJA 58 is adventuring for 6 seconds.
+DEBUG: New member of team PIRATE with ID 9.
+DEBUG: PIRATE 9 is adventuring for 5 seconds.
+DEBUG: New member of team NINJA with ID 50.
+DEBUG: NINJA 50 is adventuring for 3 seconds.
+DEBUG: New member of team PIRATE with ID 0.
+DEBUG: PIRATE 0 is adventuring for 8 seconds.
+DEBUG: PIRATE 5 is entering the queue.
+DEBUG: PIRATE 1 is entering the queue.
+DEBUG: NINJA 55 is entering the queue.
+DEBUG: Started servicing NINJA 55.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 55 is costuming for 3 seconds.
+DEBUG: NINJA 53 is entering the queue.
+DEBUG: NINJA 54 is entering the queue.
+DEBUG: NINJA 52 is entering the queue.
+DEBUG: NINJA 59 is entering the queue.
+DEBUG: NINJA 50 is entering the queue.
+DEBUG: PIRATE 3 is entering the queue.
+DEBUG: NINJA 56 is entering the queue.
+DEBUG: NINJA 57 is entering the queue.
+DEBUG: PIRATE 2 is entering the queue.
+DEBUG: PIRATE 6 is entering the queue.
+DEBUG: PIRATE 8 is entering the queue.
+DEBUG: PIRATE 4 is entering the queue.
+DEBUG: PIRATE 7 is entering the queue.
+DEBUG: PIRATE 9 is entering the queue.
+DEBUG: Finished servicing NINJA 55.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 55 has left.
+DEBUG: Started servicing PIRATE 5.
+DEBUG: PIRATE 5 is costuming for 3 seconds.
+DEBUG: Started servicing PIRATE 1.
+DEBUG: PIRATE 1 is costuming for 6 seconds.
+DEBUG: NINJA 58 is entering the queue.
+DEBUG: NINJA 51 is entering the queue.
+DEBUG: PIRATE 0 is entering the queue.
+DEBUG: Finished servicing PIRATE 5.
+DEBUG: PIRATE 5 has left.
+DEBUG: Started servicing PIRATE 3.
+DEBUG: PIRATE 3 is costuming for 4 seconds.
+DEBUG: Finished servicing PIRATE 1.
+DEBUG: PIRATE 1 has left.
+DEBUG: Started servicing PIRATE 2.
+DEBUG: PIRATE 2 is costuming for 4 seconds.
+DEBUG: Finished servicing PIRATE 3.
+DEBUG: PIRATE 3 has left.
+DEBUG: Started servicing PIRATE 6.
+DEBUG: PIRATE 6 is costuming for 5 seconds.
+DEBUG: Finished servicing PIRATE 2.
+DEBUG: PIRATE 2 has left.
+DEBUG: Started servicing PIRATE 8.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 8 is costuming for 7 seconds.
+DEBUG: Finished servicing PIRATE 6.
+DEBUG: PIRATE 6 has left.
+DEBUG: Finished servicing PIRATE 8.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 8 has left.
+DEBUG: PIRATE 8 will return.
+DEBUG: PIRATE 8 is adventuring for 1 seconds.
+DEBUG: Started servicing NINJA 53.
+DEBUG: NINJA 53 is costuming for 4 seconds.
+DEBUG: Started servicing NINJA 54.
+DEBUG: NINJA 54 is costuming for 4 seconds.
+DEBUG: PIRATE 8 is entering the queue.
+DEBUG: Finished servicing NINJA 53.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 53 has left.
+DEBUG: NINJA 53 will return.
+DEBUG: NINJA 53 is adventuring for 1 seconds.
+DEBUG: Finished servicing NINJA 54.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 54 has left.
+DEBUG: Started servicing PIRATE 4.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 4 is costuming for 6 seconds.
+DEBUG: NINJA 53 is entering the queue.
+DEBUG: Finished servicing PIRATE 4.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 4 has left.
+DEBUG: PIRATE 4 will return.
+DEBUG: PIRATE 4 is adventuring for 2 seconds.
+DEBUG: Started servicing NINJA 52.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 52 is costuming for 4 seconds.
+DEBUG: PIRATE 4 is entering the queue.
+DEBUG: Finished servicing NINJA 52.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 52 has left.
+DEBUG: Started servicing PIRATE 7.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 7 is costuming for 6 seconds.
+DEBUG: Finished servicing PIRATE 7.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 7 has left.
+DEBUG: Started servicing NINJA 59.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 59 is costuming for 3 seconds.
+DEBUG: Finished servicing NINJA 59.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 59 has left.
+DEBUG: Started servicing PIRATE 9.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 9 is costuming for 2 seconds.
+DEBUG: Finished servicing PIRATE 9.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 9 has left.
+DEBUG: Started servicing NINJA 50.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 50 is costuming for 4 seconds.
+DEBUG: Finished servicing NINJA 50.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 50 has left.
+DEBUG: Started servicing PIRATE 0.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 0 is costuming for 0 seconds.
+DEBUG: Finished servicing PIRATE 0.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 0 has left.
+DEBUG: Started servicing NINJA 56.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 56 is costuming for 9 seconds.
+DEBUG: Finished servicing NINJA 56.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 56 has left.
+DEBUG: Started servicing PIRATE 8.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 8 is costuming for 11 seconds.
+DEBUG: Finished servicing PIRATE 8.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 8 has left.
+DEBUG: PIRATE 8 will return.
+DEBUG: PIRATE 8 is adventuring for 2 seconds.
+DEBUG: Started servicing NINJA 57.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 57 is costuming for 3 seconds.
+DEBUG: PIRATE 8 is entering the queue.
+DEBUG: Finished servicing NINJA 57.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 57 has left.
+DEBUG: Started servicing PIRATE 4.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 4 is costuming for 5 seconds.
+DEBUG: Finished servicing PIRATE 4.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 4 has left.
+DEBUG: Started servicing NINJA 58.
+DEBUG: NINJA 58 is costuming for 4 seconds.
+DEBUG: Started servicing NINJA 51.
+DEBUG: NINJA 51 is costuming for 2 seconds.
+DEBUG: Finished servicing NINJA 51.
+DEBUG: NINJA 51 has left.
+DEBUG: NINJA 51 will return.
+DEBUG: NINJA 51 is adventuring for 2 seconds.
+DEBUG: Started servicing NINJA 53.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: NINJA 53 is costuming for 9 seconds.
+DEBUG: Finished servicing NINJA 58.
+DEBUG: NINJA 58 has left.
+DEBUG: NINJA 51 is entering the queue.
+DEBUG: Finished servicing NINJA 53.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 53 has left.
+DEBUG: Started servicing PIRATE 8.
+DEBUG: Started swapping department alignment TO NINJA.
+DEBUG: PIRATE 8 is costuming for 2 seconds.
+DEBUG: Finished servicing PIRATE 8.
+DEBUG: Swapped department alignment to NINJA.
+DEBUG: PIRATE 8 has left.
+DEBUG: PIRATE 8 will return.
+DEBUG: PIRATE 8 is adventuring for 3 seconds.
+DEBUG: Started servicing NINJA 51.
+DEBUG: NINJA 51 is costuming for 3 seconds.
+DEBUG: PIRATE 8 is entering the queue.
+DEBUG: Finished servicing NINJA 51.
+DEBUG: Started swapping department alignment TO PIRATE.
+DEBUG: Swapped department alignment to PIRATE.
+DEBUG: NINJA 51 has left.
+DEBUG: Started servicing PIRATE 8.
+DEBUG: PIRATE 8 is costuming for 3 seconds.
+DEBUG: Finished servicing PIRATE 8.
+DEBUG: PIRATE 8 has left.
+DEBUG: Finished servicing all people.
+-- Pirates --
+
+Pirate [0] :
+	Dur: 0	Wait: 43
+	Total Gold Owed: 0
+Pirate [1] :
+	Dur: 6	Wait: 4
+	Total Gold Owed: 6
+Pirate [2] :
+	Dur: 4	Wait: 7
+	Total Gold Owed: 4
+Pirate [3] :
+	Dur: 4	Wait: 4
+	Total Gold Owed: 4
+Pirate [4] :
+	Dur: 5	Wait: 40
+	Dur: 6	Wait: 21
+	Total Gold Owed: 6
+Pirate [5] :
+	Dur: 3	Wait: 5
+	Total Gold Owed: 3
+Pirate [6] :
+	Dur: 5	Wait: 8
+	Total Gold Owed: 5
+Pirate [7] :
+	Dur: 6	Wait: 31
+	Total Gold Owed: 0
+Pirate [8] :
+	Dur: 3	Wait: 0
+	Dur: 2	Wait: 17
+	Dur: 11	Wait: 37
+	Dur: 7	Wait: 11
+	Total Gold Owed: 12
+Pirate [9] :
+	Dur: 2	Wait: 40
+	Total Gold Owed: 0
+
+-- Ninjas --
+
+Ninja [0] :
+	Dur: 4	Wait: 44
+	Total Gold Owed: 0
+Ninja [1] :
+	Dur: 3	Wait: 9
+	Dur: 2	Wait: 71
+	Total Gold Owed: 3
+Ninja [2] :
+	Dur: 4	Wait: 29
+	Total Gold Owed: 4
+Ninja [3] :
+	Dur: 9	Wait: 54
+	Dur: 4	Wait: 19
+	Total Gold Owed: 4
+Ninja [4] :
+	Dur: 4	Wait: 19
+	Total Gold Owed: 4
+Ninja [5] :
+	Dur: 3	Wait: 0
+	Total Gold Owed: 3
+Ninja [6] :
+	Dur: 9	Wait: 47
+	Total Gold Owed: 0
+Ninja [7] :
+	Dur: 3	Wait: 67
+	Total Gold Owed: 0
+Ninja [8] :
+	Dur: 4	Wait: 73
+	Total Gold Owed: 0
+Ninja [9] :
+	Dur: 3	Wait: 39
+	Total Gold Owed: 0
+
+-- Department Statistics --
+
+Team [0] : Busy: 84	Free: 14
+Team [1] : Busy: 32	Free: 58
+
+Average Queue: 28.423077
+Gross Revenue: 58
+Gold per Visit: 2.230769
+Total Profits: 48
+

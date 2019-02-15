@@ -160,7 +160,7 @@ int other_alignment(human_t* hum) {
 }
 
 int current_wait_time(human_t* hum) {
-    return hum->t - time(NULL);
+    return time(NULL) - hum->t;
 }
 
 void adventure(human_t* hum) {

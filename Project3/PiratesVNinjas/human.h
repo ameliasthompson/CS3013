@@ -23,10 +23,10 @@
 #define STD_DEV 2
 
 // The amount of difference there has to be between queue sizes to swap.
-#define SWAP_BUFFER 2
+#define SWAP_BUFFER 4
 
 // The amount of time the head of a queue has to be to force a swap.
-#define SWAP_TIMEOUT 15
+#define SWAP_TIMEOUT 20
 
 typedef struct visit {
     int goldOwed;  // The amount of gold they owe for the visit.

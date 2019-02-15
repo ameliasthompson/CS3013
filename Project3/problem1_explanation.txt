@@ -1,0 +1,22 @@
+Code:
+    My code attempts to maximize the profits by assigning an alignment to the
+    costume department which it switches under certain circumstances. This can
+    happen either when the queue opposite to the current alignment is at least
+    four longer than the queue of the current alignment, when the queue of the
+    current alignment is empty, or when the head of the queue of the opposite
+    alignment has a current wait time of at least twenty seconds. Once the
+    alignment is signaled to be changing, no one is let in until everyone
+    has cleared out.
+
+    I feel like this does generate decent profits, however it could definitely
+    do with some fine tuning depending on the arguments given. For instance, if
+    there are excessively large costuming times, it might not even be worth it
+    to swap as by the time you get to the other queue, the entirity of it will
+    have more than thirty second wait times. All of these conditions are
+    implimented as constants at the moment, though.
+
+    It also does not generate optimized profits, as that would be very difficult
+    to solve considering the problem is non-deterministic and in real time. It
+    is obviously not solvable with a greedy algorithm, and as far as I'm aware
+    anything else would require knowing the entire problem before making any
+    choices.

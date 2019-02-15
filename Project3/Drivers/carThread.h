@@ -88,4 +88,11 @@ void leave_intersection(car_t* car);
  */
 void dequeue_car(int qid);
 
+/**
+ * Return the number of quadrants a turn takes up.
+ * @param turn The turn.
+ * @return int The number of quadrants.
+ */
+int num_quadrants(int turn);
+
 #endif

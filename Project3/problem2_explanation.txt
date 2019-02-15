@@ -1,0 +1,46 @@
+Phase 1:
+    This type of intersection would be implimented with a single critical
+    region representing the entire intersection. A car would arrive at the
+    intersection, and place themselves in a queue shared with all directions.
+    Then, the car at the front would attempt to aquire the mutex locking the
+    intersection, and sleep until it succeeds. Once it obtains the mutex, it
+    removes itself from the queue, and then occupies each quadrant it needs to
+    in order to cross the interection. Once it has exited the intersection, it
+    drops the mutex.
+
+    This is suboptimal because, while it does prevent deadlocks, it also
+    prevents a number of sets of turns that can coexist. Under this system
+    there could not be four right turns at once, for example. This results in
+    cars spending significantly longer waiting than they actually need to.
+
+Phase 2:
+    This can easily result in a deadlock as taking locks and then holding once
+    to them with little regard for whether or not the next lock may actually
+    be aquired leads to circular wait. For instance, if a driver were to turn
+    left from the south and reach the north east quadrant only to discover
+    another car attempting to drive straight from the north occupying the north
+    west quadrant which is in turn blocked by two cars turning left from the
+    west, none of the cars would be able to advance.
+
+    This can be prevented by eliminating hold and wait. This is done by routing
+    the intersection before crossing it, and attempting to take each mutex. If
+    taking a mutex fails, the car would then need to put all mutexes back and
+    wait for someone in the intersection to finish.
+
+Code:
+    My code does meet the requirements to eliminate hold and wait. It does this
+    with an intersection mutex a car must hold in order to attempt to route the
+    intersection by asigning a shared matrix of quadrants a value matching its
+    ID. Once it has succeeded routing, it drops the intersection mutex and takes
+    all quadrant mutexes. (Nothing may get in the way of that by modifying the
+    intersection during this gap, as all cars respect other cars' claims.)
+
+    Following this, it sleeps before dropping all quadrant mutexes and taking
+    the intersection mutex again so it may erase its claims.
+
+    It would be more optimal to erase each claim as it exits that quadrant,
+    however it would require significant refactoring of my code as all cars
+    at the heads of their queues would have to attempt to route every time
+    something exits a quadrant (effectively breaking enter_intersection() into
+    two functions). I do not have enough time before the deadline to do this
+    refactoring.

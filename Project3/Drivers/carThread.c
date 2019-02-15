@@ -40,7 +40,7 @@ void* car_main(void* args) {
         aquire_locks(car);
         pthread_mutex_unlock(&intersectionLock);
 
-        usleep(SLEEPTIME); // Go to sleep in the intersection.
+        usleep(SLEEPTIME * num_quadrants(car->turn)); // Go to sleep in the intersection.
 
         pthread_mutex_lock(&intersectionLock);
         leave_intersection(car); // Exit the intersection.
@@ -239,4 +239,20 @@ void dequeue_car(int qid) {
         printf("DEBUG: (dequeue car) Dropping qid %d.\n", qid);
     #endif
     pthread_mutex_unlock(&queueLock[qid]); // Stop touching the queue.
+}
+
+int num_quadrants(int turn) {
+    switch(turn) {
+    case TLEFT:
+    case WLEFT:
+        return 3;
+    case TSTRAIGHT:
+    case WSTRAIGHT:
+        return 2;
+    case TRIGHT:
+    case WRIGHT:
+        return 1;
+    default:
+        return -1;
+    }
 }

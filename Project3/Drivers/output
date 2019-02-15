@@ -1,0 +1,407 @@
+amelia@amelia-VirtualBox:~/CS3013/Project3/Drivers$ ./drivers 
+Car 6 is approaching from the North.
+Car 6 arrived at the North side of the intersection.
+Car 6 has entered the intersection from the North going right.
+Car 9 is approaching from the South.
+Car 9 arrived at the South side of the intersection.
+Car 9 has entered the intersection from the South going right.
+Car 8 is approaching from the East.
+Car 8 arrived at the East side of the intersection.
+Car 8 has entered the intersection from the East going right.
+Car 10 is approaching from the South.
+Car 7 is approaching from the West.
+Car 7 arrived at the West side of the intersection.
+Car 4 is approaching from the East.
+Car 5 is approaching from the North.
+Car 11 is approaching from the West.
+Car 12 is approaching from the East.
+Car 3 is approaching from the West.
+Car 13 is approaching from the East.
+Car 14 is approaching from the North.
+Car 15 is approaching from the North.
+Car 16 is approaching from the South.
+Car 17 is approaching from the West.
+Car 18 is approaching from the East.
+Car 2 is approaching from the West.
+Car 19 is approaching from the North.
+Car 1 is approaching from the South.
+Car 0 is approaching from the North.
+Car 6 has left the intersection.
+Car 9 has entered the intersection from the South going right.
+Car 8 has entered the intersection from the East going right.
+Car 5 arrived at the North side of the intersection.
+Car 5 has entered the intersection from the North going straight.
+Car 9 has left the intersection.
+Car 5 has entered the intersection from the North going straight.
+Car 8 has entered the intersection from the East going right.
+Car 10 arrived at the South side of the intersection.
+Car 6 is approaching from the West.
+Car 8 has left the intersection.
+Car 5 has entered the intersection from the North going straight.
+Car 10 has entered the intersection from the South going straight.
+Car 4 arrived at the East side of the intersection.
+Car 9 is approaching from the South.
+Car 8 is approaching from the West.
+Car 5 has left the intersection.
+Car 10 has entered the intersection from the South going straight.
+Car 10 has left the intersection.
+Car 14 has entered the intersection from the North going left.
+Car 14 arrived at the North side of the intersection.
+Car 16 arrived at the South side of the intersection.
+Car 10 is approaching from the North.
+Car 5 is approaching from the South.
+Car 14 has left the intersection.
+Car 16 has entered the intersection from the South going right.
+Car 4 has entered the intersection from the East going straight.
+Car 15 arrived at the North side of the intersection.
+Car 14 is approaching from the South.
+Car 16 has left the intersection.
+Car 4 has entered the intersection from the East going straight.
+Car 7 has entered the intersection from the West going straight.
+Car 1 arrived at the South side of the intersection.
+Car 16 is approaching from the West.
+Car 4 has left the intersection.
+Car 15 has entered the intersection from the North going right.
+Car 7 has entered the intersection from the West going straight.
+Car 12 arrived at the East side of the intersection.
+Car 4 is approaching from the South.
+Car 7 has left the intersection.
+Car 15 has entered the intersection from the North going right.
+Car 1 has entered the intersection from the South going straight.
+Car 11 arrived at the West side of the intersection.
+Car 15 has left the intersection.
+Car 1 has entered the intersection from the South going straight.
+Car 19 arrived at the North side of the intersection.
+Car 19 has entered the intersection from the North going straight.
+Car 7 is approaching from the East.
+Car 15 is approaching from the East.
+Car 19 has left the intersection.
+Car 1 has entered the intersection from the South going straight.
+Car 1 has left the intersection.
+Car 0 has entered the intersection from the North going right.
+Car 11 has entered the intersection from the West going straight.
+Car 9 arrived at the South side of the intersection.
+Car 0 arrived at the North side of the intersection.
+Car 19 is approaching from the North.
+Car 1 is approaching from the North.
+Car 0 has left the intersection.
+Car 11 has entered the intersection from the West going straight.
+Car 10 arrived at the North side of the intersection.
+Car 0 is approaching from the South.
+Car 11 has left the intersection.
+Car 10 has entered the intersection from the North going straight.
+Car 9 has entered the intersection from the South going right.
+Car 3 arrived at the West side of the intersection.
+Car 11 is approaching from the North.
+Car 9 has left the intersection.
+Car 10 has entered the intersection from the North going straight.
+Car 5 arrived at the South side of the intersection.
+Car 5 has entered the intersection from the South going right.
+Car 9 is approaching from the West.
+Car 5 has left the intersection.
+Car 10 has entered the intersection from the North going straight.
+Car 10 has left the intersection.
+Car 14 has entered the intersection from the South going right.
+Car 12 has entered the intersection from the East going left.
+Car 14 arrived at the South side of the intersection.
+Car 19 arrived at the North side of the intersection.
+Car 10 is approaching from the North.
+Car 5 is approaching from the East.
+Car 14 has left the intersection.
+Car 12 has entered the intersection from the East going left.
+Car 4 arrived at the South side of the intersection.
+Car 14 is approaching from the West.
+Car 12 has left the intersection.
+Car 19 has entered the intersection from the North going left.
+Car 13 arrived at the East side of the intersection.
+Car 12 is approaching from the West.
+Car 19 has left the intersection.
+Car 4 has entered the intersection from the South going straight.
+Car 3 has entered the intersection from the West going right.
+Car 1 arrived at the North side of the intersection.
+Car 19 is approaching from the East.
+Car 3 has left the intersection.
+Car 1 has entered the intersection from the North going straight.
+Car 4 has entered the intersection from the South going straight.
+Car 17 arrived at the West side of the intersection.
+Car 3 is approaching from the West.
+Car 4 has left the intersection.
+Car 1 has entered the intersection from the North going straight.
+Car 0 arrived at the South side of the intersection.
+Car 0 has entered the intersection from the South going right.
+Car 4 is approaching from the North.
+Car 1 has left the intersection.
+Car 0 has entered the intersection from the South going right.
+Car 13 has entered the intersection from the East going left.
+Car 11 arrived at the North side of the intersection.
+Car 0 has left the intersection.
+Car 13 has entered the intersection from the East going left.
+Car 1 is approaching from the South.
+Car 1 arrived at the South side of the intersection.
+Car 0 is approaching from the East.
+Car 13 has left the intersection.
+Car 11 has entered the intersection from the North going right.
+Car 1 has entered the intersection from the South going straight.
+Car 18 arrived at the East side of the intersection.
+Car 13 is approaching from the North.
+Car 11 has left the intersection.
+Car 1 has entered the intersection from the South going straight.
+Car 10 arrived at the North side of the intersection.
+Car 11 is approaching from the North.
+Car 1 has left the intersection.
+Car 10 has entered the intersection from the North going left.
+Car 1 is approaching from the South.
+Car 1 arrived at the South side of the intersection.
+Car 10 has left the intersection.
+Car 1 has entered the intersection from the South going right.
+Car 18 has entered the intersection from the East going left.
+Car 4 arrived at the North side of the intersection.
+Car 10 is approaching from the South.
+Car 1 has left the intersection.
+Car 18 has entered the intersection from the East going left.
+Car 10 arrived at the South side of the intersection.
+Car 10 has entered the intersection from the South going right.
+Car 1 is approaching from the South.
+Car 10 has left the intersection.
+Car 18 has entered the intersection from the East going left.
+Car 1 arrived at the South side of the intersection.
+Car 10 is approaching from the South.
+Car 18 has left the intersection.
+Car 4 has entered the intersection from the North going straight.
+Car 1 has entered the intersection from the South going straight.
+Car 7 arrived at the East side of the intersection.
+Car 18 is approaching from the South.
+Car 4 has left the intersection.
+Car 1 has entered the intersection from the South going straight.
+Car 13 arrived at the North side of the intersection.
+Car 13 has entered the intersection from the North going straight.
+Car 1 has left the intersection.
+Car 13 has entered the intersection from the North going straight.
+Car 10 arrived at the South side of the intersection.
+Car 10 has entered the intersection from the South going straight.
+Car 4 is approaching from the North.
+Car 1 is approaching from the West.
+Car 13 has left the intersection.
+Car 10 has entered the intersection from the South going straight.
+Car 11 arrived at the North side of the intersection.
+Car 11 has entered the intersection from the North going right.
+Car 10 has left the intersection.
+Car 11 has entered the intersection from the North going right.
+Car 17 has entered the intersection from the West going straight.
+Car 18 arrived at the South side of the intersection.
+Car 13 is approaching from the North.
+Car 10 is approaching from the West.
+Car 11 has left the intersection.
+Car 17 has entered the intersection from the West going straight.
+Car 4 arrived at the North side of the intersection.
+Car 4 has entered the intersection from the North going right.
+Car 11 is approaching from the West.
+Car 17 has left the intersection.
+Car 4 has entered the intersection from the North going right.
+Car 18 has entered the intersection from the South going right.
+Car 2 arrived at the West side of the intersection.
+Car 17 is approaching from the South.
+Car 4 has left the intersection.
+Car 18 has entered the intersection from the South going right.
+Car 7 has entered the intersection from the East going left.
+Car 13 arrived at the North side of the intersection.
+Car 4 is approaching from the South.
+Car 18 has left the intersection.
+Car 7 has entered the intersection from the East going left.
+Car 17 arrived at the South side of the intersection.
+Car 18 is approaching from the South.
+Car 7 has left the intersection.
+Car 13 has entered the intersection from the North going right.
+Car 17 has entered the intersection from the South going straight.
+Car 15 arrived at the East side of the intersection.
+Car 7 is approaching from the South.
+Car 13 has left the intersection.
+Car 17 has entered the intersection from the South going straight.
+Car 13 is approaching from the North.
+Car 13 arrived at the North side of the intersection.
+Car 13 has entered the intersection from the North going right.
+Car 17 has left the intersection.
+Car 13 has entered the intersection from the North going right.
+Car 2 has entered the intersection from the West going straight.
+Car 4 arrived at the South side of the intersection.
+Car 17 is approaching from the West.
+Car 13 has left the intersection.
+Car 15 has entered the intersection from the East going straight.
+Car 2 has entered the intersection from the West going straight.
+Car 13 is approaching from the East.
+Car 2 has left the intersection.
+Car 15 has entered the intersection from the East going straight.
+Car 6 arrived at the West side of the intersection.
+Car 15 has left the intersection.
+Car 4 has entered the intersection from the South going left.
+Car 5 arrived at the East side of the intersection.
+Car 2 is approaching from the West.
+Car 15 is approaching from the South.
+Car 4 has left the intersection.
+Car 5 has entered the intersection from the East going straight.
+Car 18 arrived at the South side of the intersection.
+Car 4 is approaching from the North.
+Car 4 arrived at the North side of the intersection.
+Car 5 has left the intersection.
+Car 4 has entered the intersection from the North going right.
+Car 6 has entered the intersection from the West going left.
+Car 19 arrived at the East side of the intersection.
+Car 5 is approaching from the East.
+Car 4 has left the intersection.
+Car 6 has entered the intersection from the West going left.
+Car 4 is approaching from the South.
+Car 6 has left the intersection.
+Car 18 has entered the intersection from the South going left.
+Car 8 arrived at the West side of the intersection.
+Car 8 has entered the intersection from the West going right.
+Car 6 is approaching from the North.
+Car 6 arrived at the North side of the intersection.
+Car 8 has left the intersection.
+Car 18 has entered the intersection from the South going left.
+Car 16 arrived at the West side of the intersection.
+Car 16 has entered the intersection from the West going right.
+Car 8 is approaching from the North.
+Car 16 has left the intersection.
+Car 18 has entered the intersection from the South going left.
+Car 9 arrived at the West side of the intersection.
+Car 16 is approaching from the West.
+Car 18 has left the intersection.
+Car 6 has entered the intersection from the North going right.
+Car 9 has entered the intersection from the West going straight.
+Car 7 arrived at the South side of the intersection.
+Car 18 is approaching from the East.
+Car 6 has left the intersection.
+Car 19 has entered the intersection from the East going straight.
+Car 9 has entered the intersection from the West going straight.
+Car 8 arrived at the North side of the intersection.
+Car 6 is approaching from the East.
+Car 9 has left the intersection.
+Car 7 has entered the intersection from the South going right.
+Car 19 has entered the intersection from the East going straight.
+Car 14 arrived at the West side of the intersection.
+Car 9 is approaching from the West.
+Car 7 has left the intersection.
+Car 19 has entered the intersection from the East going straight.
+Car 15 arrived at the South side of the intersection.
+Car 19 has left the intersection.
+Car 8 has entered the intersection from the North going right.
+Car 14 has entered the intersection from the West going left.
+Car 0 arrived at the East side of the intersection.
+Car 7 is approaching from the West.
+Car 19 is approaching from the East.
+Car 8 has left the intersection.
+Car 14 has entered the intersection from the West going left.
+Car 8 is approaching from the East.
+Car 14 has left the intersection.
+Car 15 has entered the intersection from the South going left.
+Car 12 arrived at the West side of the intersection.
+Car 14 is approaching from the North.
+Car 14 arrived at the North side of the intersection.
+Car 15 has left the intersection.
+Car 14 has entered the intersection from the North going straight.
+Car 4 arrived at the South side of the intersection.
+Car 4 has entered the intersection from the South going straight.
+Car 15 is approaching from the South.
+Car 14 has left the intersection.
+Car 4 has entered the intersection from the South going straight.
+Car 4 has left the intersection.
+Car 0 has entered the intersection from the East going straight.
+Car 15 arrived at the South side of the intersection.
+Car 15 has entered the intersection from the South going right.
+Car 14 is approaching from the West.
+Car 4 is approaching from the North.
+Car 4 arrived at the North side of the intersection.
+Car 15 has left the intersection.
+Car 0 has entered the intersection from the East going straight.
+Car 15 is approaching from the North.
+Car 0 has left the intersection.
+Car 4 has entered the intersection from the North going left.
+Car 13 arrived at the East side of the intersection.
+Car 0 is approaching from the North.
+Car 4 has left the intersection.
+Car 13 has entered the intersection from the East going left.
+Car 15 arrived at the North side of the intersection.
+Car 4 is approaching from the North.
+Car 13 has left the intersection.
+Car 15 has entered the intersection from the North going left.
+Car 5 arrived at the East side of the intersection.
+Car 13 is approaching from the East.
+Car 15 has left the intersection.
+Car 5 has entered the intersection from the East going straight.
+Car 0 arrived at the North side of the intersection.
+Car 15 is approaching from the North.
+Car 5 has left the intersection.
+Car 0 has entered the intersection from the North going right.
+Car 12 has entered the intersection from the West going left.
+Car 18 arrived at the East side of the intersection.
+Car 5 is approaching from the West.
+Car 0 has left the intersection.
+Car 12 has entered the intersection from the West going left.
+Car 4 arrived at the North side of the intersection.
+Car 0 is approaching from the South.
+Car 0 arrived at the South side of the intersection.
+Car 12 has left the intersection.
+Car 4 has entered the intersection from the North going left.
+Car 3 arrived at the West side of the intersection.
+Car 12 is approaching from the East.
+Car 4 has left the intersection.
+Car 0 has entered the intersection from the South going right.
+Car 18 has entered the intersection from the East going straight.
+Car 15 arrived at the North side of the intersection.
+Car 4 is approaching from the South.
+Car 0 has left the intersection.
+Car 18 has entered the intersection from the East going straight.
+Car 4 arrived at the South side of the intersection.
+Car 0 is approaching from the South.
+Car 18 has left the intersection.
+Car 15 has entered the intersection from the North going left.
+Car 6 arrived at the East side of the intersection.
+Car 18 is approaching from the South.
+Car 15 has left the intersection.
+Car 4 has entered the intersection from the South going left.
+Car 15 is approaching from the North.
+Car 15 arrived at the North side of the intersection.
+Car 4 has left the intersection.
+Car 15 has entered the intersection from the North going right.
+Car 3 has entered the intersection from the West going left.
+Car 0 arrived at the South side of the intersection.
+Car 4 is approaching from the West.
+Car 15 has left the intersection.
+Car 3 has entered the intersection from the West going left.
+Car 15 is approaching from the East.
+Car 3 has left the intersection.
+Car 0 has entered the intersection from the South going right.
+Car 6 has entered the intersection from the East going straight.
+Car 1 arrived at the West side of the intersection.
+Car 1 has entered the intersection from the West going right.
+Car 3 is approaching from the West.
+Car 1 has left the intersection.
+Car 0 has entered the intersection from the South going right.
+Car 6 has entered the intersection from the East going straight.
+Car 10 arrived at the West side of the intersection.
+Car 10 has entered the intersection from the West going right.
+Car 0 has left the intersection.
+Car 6 has entered the intersection from the East going straight.
+Car 10 has entered the intersection from the West going right.
+Car 18 arrived at the South side of the intersection.
+Car 1 is approaching from the East.
+Car 0 is approaching from the South.
+Car 6 has left the intersection.
+Car 18 has entered the intersection from the South going straight.
+Car 10 has entered the intersection from the West going right.
+Car 19 arrived at the East side of the intersection.
+Car 6 is approaching from the North.
+Car 6 arrived at the North side of the intersection.
+Car 10 has left the intersection.
+Car 18 has entered the intersection from the South going straight.
+Car 11 arrived at the West side of the intersection.
+Car 10 is approaching from the West.
+Car 18 has left the intersection.
+Car 6 has entered the intersection from the North going left.
+Car 0 arrived at the South side of the intersection.
+Car 18 is approaching from the South.
+Car 6 has left the intersection.
+Car 0 has entered the intersection from the South going left.
+Car 6 is approaching from the West.
+^C
+

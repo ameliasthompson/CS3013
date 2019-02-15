@@ -5,7 +5,7 @@
 
 // Constants.
 #define NUM_CARS    20
-#define SLEEPTIME   1
+#define SLEEPTIME   250000
 #define RECYCLETIME 1
 
 // Turn enumeration.
