@@ -5,6 +5,7 @@ seymour
 ancestry
 drivers
 pvn
+mem
 test*
 *.o
 *.zip
