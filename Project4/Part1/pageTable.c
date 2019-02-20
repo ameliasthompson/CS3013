@@ -40,7 +40,7 @@ page_t* find_page(int pid, int n) {
     if (!procTable[pid].valid) {
         return NULL;
     } else {
-        return procTable[pid].frame * PAGE_SIZE + n;
+        return (page_t*)&mainMemory[procTable[pid].frame * PAGE_SIZE + n];
     }
 }
 
@@ -91,6 +91,7 @@ int map_page(int pid, int address, int write) {
     page->frame = frame;
     page->valid = 1;
     page->write = write;
+    printf("Mapped virtual address %d (page %d) to physical frame %d\n", address, address / PAGE_SIZE, frame);
     return 1;
 }
 
@@ -106,18 +107,19 @@ int store(int pid, int address, unsigned char value) {
 
     // Check to see if the page is valid.
     if(!page->valid) {
-        printf("Address %d has no frame mapped for PID %d\n", address, pid);
+        printf("Virtual address %d has no frame mapped for PID %d\n", address, pid);
         return 0;
     }
     
     // Check to see if writing is allowed.
     if (!page->write) {
-        printf("Writing is forbidden at %d for PID %d\n", address, pid);
+        printf("Writing is forbidden at virtual address %d for PID %d\n", address, pid);
         return 0;   
     }
     
     // Finally do the writing.
     mainMemory[page->frame * PAGE_SIZE + offset] = value;
+    printf("Stored value %d at virtual address %d (physical address %d)\n", (int)value, address, page->frame * PAGE_SIZE + offset);
     return 1;
 }
 
@@ -133,11 +135,12 @@ int load(int pid, int address, unsigned char* out) {
 
     // Check to see if the page is valid.
     if(!page->valid) {
-        printf("Address %d has no frame mapped for PID %d\n", address, pid);
+        printf("Virtual address %d has no frame mapped for PID %d\n", address, pid);
         return 0;
     }
 
     //Finally do the reading.
     *out = mainMemory[page->frame * PAGE_SIZE + offset];
+    printf("Read value %d at virtual address %d (physical address %d)\n", (int)*out, address, page->frame * PAGE_SIZE + offset);
     return 1;
 }

@@ -4,6 +4,7 @@
 #define PAGE_TABLE_H
 
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #define MAX_PROCESSES   4
