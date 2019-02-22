@@ -3,13 +3,14 @@
 #include "pageTable.h"
 
 extern unsigned char mainMemory[PHYS_MEM_SIZE];
+storedFrame_t backingStore[STORE_FRAMES];
 extern page_t procTable[MAX_PROCESSES];
 
-int frame_allocated(int frame) {
+page_t* frame_allocated(int frame) {
     for (int i = 0; i < MAX_PROCESSES; i++) {
         if (procTable[i].valid) {
             if (procTable[i].frame == frame) {
-                return 1; // If that frame is a page table.
+                return &procTable[i]; // If that frame is a page table.
             } else {
                 for (int j = procTable[i].frame * PAGE_SIZE;
                         j < procTable[i].frame * PAGE_SIZE + PAGE_SIZE;
@@ -17,14 +18,14 @@ int frame_allocated(int frame) {
 
                     page_t* tmp = (page_t*)&mainMemory[j];
                     if (tmp->valid && tmp->frame == frame) {
-                        return 1; // If that frame is allocated.
+                        return tmp; // If that frame is allocated.
                     }
                 }
             }
         }
     }
 
-    return 0;
+    return NULL; // There was no frame.
 }
 
 int find_free_frame() {
@@ -33,18 +34,106 @@ int find_free_frame() {
         if (!frame_allocated(i)) return i;
     }
 
-    return -1;
+    return free_frame();
+}
+
+int get_page_num(const page_t* page) {
+    for (int i = 0; i < MAX_PROCESSES; i++) {
+        if (procTable[i].valid) {
+            if (page == &procTable[i]) {
+                return -1; // If that page is a hardware thing.
+            } else {
+                for (int j = procTable[i].frame * PAGE_SIZE;
+                        j < procTable[i].frame * PAGE_SIZE + PAGE_SIZE;
+                        j++) {
+
+                    page_t* tmp = (page_t*)&mainMemory[j];
+                    if (page == tmp) {
+                        return j; // If that page is an entry.
+                    }
+                }
+            }
+        }
+    }
+}
+
+int free_frame() {
+    // Get the page of the frame we're operating on.
+    static int robin = 0;
+    page_t* page = frame_allocated(robin);
+
+    // Find an unused portion of the backing store.
+    for (int i = 0; i < STORE_FRAMES; i++) {
+        if (backingStore[i].pid < 0) {
+            backingStore[i].pid = page->procc; // Claim the frame.
+            backingStore[i].write = page->write;
+            backingStore[i].page = get_page_num(page);
+
+            // Copy the data in.
+            for (int j = 0; j < PAGE_SIZE; j++) {
+                backingStore[i].data[j] = mainMemory[page->frame * PAGE_SIZE + j];
+            }
+
+            page->valid = 0; // Mark invalid.
+            break;
+        }
+    }
+
+    // This frame is now free!
+    return robin;
 }
 
 page_t* find_page(int pid, int n) {
     if (!procTable[pid].valid) {
-        return NULL;
-    } else {
-        return (page_t*)&mainMemory[procTable[pid].frame * PAGE_SIZE + n];
+        // If the table isn't loaded, we need to load it.
+        init_table(pid);
+    } 
+    
+    return (page_t*)&mainMemory[procTable[pid].frame * PAGE_SIZE + n];
+}
+
+int check_backing_store(int pid, int pageNum) {
+    for (int i = 0; i < STORE_FRAMES; i++) {
+        if (backingStore[i].pid == pid && backingStore[i].page == pageNum) {
+            // We found it!!!
+
+            int frame = find_free_frame(); // We need a frame to stick this in.
+
+            // Copy the data over.
+            for (int j = 0; j < PAGE_SIZE; j++) {
+                mainMemory[frame * PAGE_SIZE + j] = backingStore[i].data[j];
+            }
+
+            // Insert the page into the appropriate table.
+            if (pageNum == -1) {
+                // It's a hardware page.
+                procTable[pid].frame = frame;
+                procTable[pid].procc = pid;
+                procTable[pid].valid = 1;
+                procTable[pid].write = backingStore[i].write;
+            
+            } else {
+                // It's not a hardware page.
+                page_t* tmp = find_page(pid, pageNum);
+                tmp->frame = frame;
+                tmp->procc = pid;
+                tmp->valid = 1;
+                tmp->write = backingStore[i].write;
+            }
+
+            backingStore[i].pid = -1; // Free the slot.
+            return 1;
+        }
     }
+
+    return 0;
 }
 
 void init_table(int pid) {
+    // Exit if we can load it from the backing store.
+    if (check_backing_store(pid, -1)) return;
+
+    // Otherwise make it happen.
     int frame = find_free_frame();
 
     if(frame >= 0) {

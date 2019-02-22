@@ -7,6 +7,7 @@
 #include "pageTable.h"
 
 unsigned char mainMemory[PHYS_MEM_SIZE];
+storedFrame_t backingStore[STORE_FRAMES];
 page_t procTable[MAX_PROCESSES];
 
 int main() {
