@@ -1,0 +1,52 @@
+amelia@amelia-VirtualBox:~/CS3013/Project4/Part2$ ./mem
+Size of page struct: 1
+cmd: 0,map,1,1
+Put page table for PID 0 in physical frame 0
+Mapped virtual address 1 (page 0) to physical frame 1
+cmd: 0,store,1,25
+Stored value 25 at virtual address 1 (physical address 17)
+cmd: 0,store,2,43
+Stored value 43 at virtual address 2 (physical address 18)
+cmd: 0,map,1,0
+Updating write permissions on page 0
+cmd: 0,store,1,1
+Writing is forbidden at virtual address 1 for PID 0
+cmd: 0,load,1,0
+Read value 25 at virtual address 1 (physical address 17)
+cmd: 0,load,2,0
+Read value 43 at virtual address 2 (physical address 18)
+cmd: 1,map,23,1
+Put page table for PID 1 in physical frame 2
+Mapped virtual address 23 (page 1) to physical frame 3
+cmd: 1,map,32,1
+Unloading contents of page table for PID 0
+Moved physical frame 1 to backing store slot 0
+Moved physical frame 0 to backing store slot 1
+Mapped virtual address 32 (page 2) to physical frame 0
+cmd: 2,store,1,1
+PID 2 has no pages associated with it
+cmd: 3,load,1,0
+PID 3 has no pages associated with it
+cmd: 2,map,1,1
+Put page table for PID 2 in physical frame 1
+Skipped moving physical frame 1 to the backing store
+Unloading contents of page table for PID 1
+Moved physical frame 3 to backing store slot 2
+Moved physical frame 0 to backing store slot 3
+Moved physical frame 2 to backing store slot 4
+Mapped virtual address 1 (page 0) to physical frame 2
+cmd: 0,load,1,0
+Loaded page table for PID 0 from the backing store into physical frame 0
+Virtual address 1 has no frame mapped for PID 0
+cmd: 0,load,2,0
+Virtual address 2 has no frame mapped for PID 0
+cmd: 1,store,23,43
+Loaded page table for PID 1 from the backing store into physical frame 3
+Skipped moving physical frame 3 to the backing store
+Unloading contents of page table for PID 0
+Moved physical frame 0 to backing store slot 1
+Loaded page 1 for PID 1 from the backing store into physical frame 0
+Stored value 43 at virtual address 23 (physical address 7)
+cmd: 1,load,23,0
+Read value 43 at virtual address 23 (physical address 7)
+cmd: ^C
