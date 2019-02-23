@@ -42,12 +42,9 @@ int get_page_num(const page_t* page) {
         if (page == &procTable[i]) {
             return -1; // That page is a hardware thing.
         } else if (procTable[i].valid) {     
-            for (int j = procTable[i].frame * PAGE_SIZE;
-                    j < procTable[i].frame * PAGE_SIZE + PAGE_SIZE;
-                    j++) {
-
-                page_t* tmp = (page_t*)&mainMemory[j];
-                if (page == tmp) {
+            for (int j = 1; j < PAGE_SIZE; j++) {
+                // Compare the addresses.
+                if (page == (page_t*)&mainMemory[procTable[i].frame * PAGE_SIZE + j]) {
                     return j; // If that page is an entry.
                 }
             }           

@@ -84,7 +84,8 @@ int map_page(int pid, int address, int write) {
     
     // Check to see if the page is already allocated.
     if (page->valid) {
-        printf("Virtual address %d (page %d) is already mapped to a physical frame %d\n", address, address / PAGE_SIZE, page->frame);
+        printf("Updating write permissions on page %d\n", address / PAGE_SIZE);
+        page->write = write;
         return 0;
     }
 

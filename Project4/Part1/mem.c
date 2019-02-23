@@ -47,6 +47,10 @@ int main() {
             continue;
         }
 
+        if (pid >= MAX_PROCESSES || pid < 0) {
+            printf("PID out of bounds\n");
+        }
+
         // MAP
         if (strcmp(instruction, "map") == 0) {
             // Confirm arguments:
