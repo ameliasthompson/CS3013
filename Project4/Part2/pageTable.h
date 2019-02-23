@@ -55,9 +55,9 @@ int free_frame(int pid);
 
 /**
  * Free a specified frame.
- * @param frame The frame to free.
+ * @param page The page pointing to the frame to free.
  */
-void free_specific_frame(int frame);
+void free_specific_frame(page_t* page);
 
 /**
  * Find the page with id n belonging to the process provided. NULL is returned

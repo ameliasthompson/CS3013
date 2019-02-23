@@ -16,7 +16,10 @@ int main() {
     #endif
 
     // Initialize all proccess page tables to invalid.
-    for (int i = 0; i < MAX_PROCESSES; i++) procTable->valid = 0;
+    for (int i = 0; i < MAX_PROCESSES; i++) procTable[i].valid = 0;
+
+    // Initialize backing store to unused.
+    for (int i = 0; i < STORE_FRAMES; i++) backingStore[i].pid = -1;
 
     // Input loop.
     while(1) {
@@ -43,21 +46,26 @@ int main() {
         if (valuestr != NULL) value = atoi(valuestr);
 
         // Check to see if it's out of bounds.
-        if (address >= VIRT_ADD_SPACE) {
+        if (address >= VIRT_ADD_SPACE || address < 0) {
             printf("Address out of bounds\n");
             continue;
         }
 
         // MAP
-        if (strcmp(instruction, "map,")) {
+        if (strcmp(instruction, "map") == 0) {
+            // Confirm arguments:
+            if (value > 1 || value < 0) {
+                printf("Write flag may only be 0 or 1\n");
+                continue;
+            }
             map_page(pid, address, value);
 
         // STORE
-        } else if (strcmp(instruction, "store,")) {
+        } else if (strcmp(instruction, "store") == 0) {
             store(pid, address, (unsigned char)value);
 
         // LOAD
-        } else if (strcmp(instruction, "load,")) {
+        } else if (strcmp(instruction, "load") == 0) {
             unsigned char c;
             load(pid, address, &c);
 

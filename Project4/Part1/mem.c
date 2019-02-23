@@ -29,9 +29,9 @@ int main() {
         char* valuestr;
 
         pidstr = strtok(buf, ",");
-        instruction = strtok(buf, ",");
-        addressstr = strtok(buf, ",");
-        valuestr = strtok(buf, ",");
+        instruction = strtok(NULL, ",");
+        addressstr = strtok(NULL, ",");
+        valuestr = strtok(NULL, ",");
         
         int pid = 0;
         int address = 0;
@@ -42,21 +42,26 @@ int main() {
         if (valuestr != NULL) value = atoi(valuestr);
 
         // Check to see if it's out of bounds.
-        if (address >= VIRT_ADD_SPACE) {
+        if (address >= VIRT_ADD_SPACE || address < 0) {
             printf("Address out of bounds\n");
             continue;
         }
 
         // MAP
-        if (strcmp(instruction, "map,")) {
+        if (strcmp(instruction, "map") == 0) {
+            // Confirm arguments:
+            if (value > 1 || value < 0) {
+                printf("Write flag may only be 0 or 1\n");
+                continue;
+            }
             map_page(pid, address, value);
 
         // STORE
-        } else if (strcmp(instruction, "store,")) {
+        } else if (strcmp(instruction, "store") == 0) {
             store(pid, address, (unsigned char)value);
 
         // LOAD
-        } else if (strcmp(instruction, "load,")) {
+        } else if (strcmp(instruction, "load") == 0) {
             unsigned char c;
             load(pid, address, &c);
 

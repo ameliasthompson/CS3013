@@ -10,6 +10,7 @@
 #define MAX_PROCESSES   4
 
 #define PHYS_MEM_SIZE   64
+#define VIRT_ADD_SPACE  64
 #define PAGE_SIZE       16
 #define PAGE_FRAMES     (PHYS_MEM_SIZE / PAGE_SIZE)
 
