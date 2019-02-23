@@ -30,9 +30,9 @@ int main() {
         char* valuestr;
 
         pidstr = strtok(buf, ",");
-        instruction = strtok(buf, ",");
-        addressstr = strtok(buf, ",");
-        valuestr = strtok(buf, ",");
+        instruction = strtok(NULL, ",");
+        addressstr = strtok(NULL, ",");
+        valuestr = strtok(NULL, ",");
         
         int pid = 0;
         int address = 0;

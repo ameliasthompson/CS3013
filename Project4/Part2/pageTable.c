@@ -28,13 +28,13 @@ page_t* frame_allocated(int frame) {
     return NULL; // There was no frame.
 }
 
-int find_free_frame() {
+int find_free_frame(int pid) {
     for (int i = 0; i < PAGE_FRAMES; i++) {
         // Find an unallocated frame.
         if (!frame_allocated(i)) return i;
     }
 
-    return free_frame();
+    return free_frame(pid);
 }
 
 int get_page_num(const page_t* page) {
@@ -55,12 +55,43 @@ int get_page_num(const page_t* page) {
             }
         }
     }
+
+    return -2; // THIS WOULD BE REALLY BAD
 }
 
-int free_frame() {
+int free_frame(int pid) {
     // Get the page of the frame we're operating on.
     static int robin = 0;
     page_t* page = frame_allocated(robin);
+
+    // Skip the frame if it contains the table for the provided pid.
+    if (page == &procTable[pid]) {
+        printf("Skipped moving physical frame %d to the backing store\n", robin);
+        robin++;
+        if (robin >= PAGE_FRAMES) robin = 0;
+        return free_frame(pid);
+    }
+
+    // If it's another processes table, we have to free everything.
+    if (page >= &procTable[0] && page < &procTable[MAX_PROCESSES]) {
+        printf("Unloading contents of page table for PID %d\n", pid);
+        for (int i = 0; i < PAGE_SIZE; i++) {
+            if (mainMemory[page->frame * PAGE_SIZE + i])
+                free_specific_frame(((page_t*)&mainMemory[page->frame * PAGE_SIZE + i])->frame);
+        }
+    }
+
+    free_specific_frame(robin);
+
+    int ret = robin;
+    robin++;
+    if (robin >= PAGE_FRAMES) robin = 0;
+    return ret;
+}
+
+void free_specific_frame(int frame) {
+    // Get the page of the frame we're operating on.
+    page_t* page = frame_allocated(frame);
 
     // Find an unused portion of the backing store.
     for (int i = 0; i < STORE_FRAMES; i++) {
@@ -80,7 +111,7 @@ int free_frame() {
     }
 
     // This frame is now free!
-    return robin;
+    printf("Moved physical frame %d to the backing store\n", frame);
 }
 
 page_t* find_page(int pid, int n) {
@@ -97,7 +128,7 @@ int check_backing_store(int pid, int pageNum) {
         if (backingStore[i].pid == pid && backingStore[i].page == pageNum) {
             // We found it!!!
 
-            int frame = find_free_frame(); // We need a frame to stick this in.
+            int frame = find_free_frame(pid); // We need a frame to stick this in.
 
             // Copy the data over.
             for (int j = 0; j < PAGE_SIZE; j++) {
@@ -121,6 +152,7 @@ int check_backing_store(int pid, int pageNum) {
                 tmp->write = backingStore[i].write;
             }
 
+            printf("Loaded page %d for PID %d into physical frame %d", pageNum, pid, frame);
             backingStore[i].pid = -1; // Free the slot.
             return 1;
         }
@@ -134,7 +166,7 @@ void init_table(int pid) {
     if (check_backing_store(pid, -1)) return;
 
     // Otherwise make it happen.
-    int frame = find_free_frame();
+    int frame = find_free_frame(pid);
 
     if(frame >= 0) {
         // If there's a free frame, point the page table at it.
@@ -157,16 +189,6 @@ void init_table(int pid) {
 }
 
 int map_page(int pid, int address, int write) {
-    if (!procTable[pid].valid) {
-        // If there's no page table, we need to make one.
-        init_table(pid);
-
-        // If there's still no page table, then we failed to make one.
-        if (!procTable[pid].valid) {
-            printf("Unable to find page table for PID %d\n", pid);
-            return 0;
-        }
-    }
 
     // Divide and round down the address to find the right page.
     page_t* page = find_page(pid, address / PAGE_SIZE);
@@ -178,7 +200,7 @@ int map_page(int pid, int address, int write) {
     }
 
     // Find a free frame.
-    int frame = find_free_frame();
+    int frame = find_free_frame(pid);
     if (frame < 0) {
         printf("Unable to find a free physical frame for new page\n");
         return 0;
@@ -203,7 +225,7 @@ int store(int pid, int address, unsigned char value) {
     int offset = address % PAGE_SIZE;
 
     // Check to see if the page is valid.
-    if(!page->valid) {
+    if(!page->valid && check_backing_store(pid, get_page_num(page))) {
         printf("Virtual address %d has no frame mapped for PID %d\n", address, pid);
         return 0;
     }

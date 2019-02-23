@@ -38,16 +38,26 @@ page_t* frame_allocated(int frame);
 
 /**
  * Find a frame currently assigned to no pages. If there are no free frames,
- * a frame is freed, and then that one is used.
+ * a frame is freed, and then that one is used. Skip frames occupied by the
+ * page table for the process provided.
+ * @param pid  The process to ignore tables for.
  * @return int The id of the frame.
  */
-int find_free_frame();
+int find_free_frame(int pid);
 
 /**
- * Frees a frame round robin style.
+ * Free a frame round robin style. Skip frames occupied by the page table for
+ * the process provided.
+ * @param pid  The process to ignore tables for,
  * @return int The frame that was freed.
  */
-int free_frame();
+int free_frame(int pid);
+
+/**
+ * Free a specified frame.
+ * @param frame The frame to free.
+ */
+void free_specific_frame(int frame);
 
 /**
  * Find the page with id n belonging to the process provided. NULL is returned
@@ -61,11 +71,11 @@ page_t* find_page(int pid, int n);
 /**
  * Check the backing store for a page. If it is found, load it into memory and
  * return the page. If it is not found, NULL is returned.
- * @param pid      The process the page belongs to.
- * @param pageNum  The page number for the process.
- * @return page_t* The loaded page.
+ * @param pid     The process the page belongs to.
+ * @param pageNum The page number for the process.
+ * @return int    If the page was loaded.
  */
-page_t* check_backing_store(int pid, int pageNum);
+int check_backing_store(int pid, int pageNum);
 
 /**
  * Allocate a page table for a process.
